@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Shiv Khera - Transform Your Future</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+    --cream:#FAF6F0;--warm-white:#FFF8F0;--ivory:#F5EDE3;
+    --tan:#E8DDD0;--sand:#D4C5B2;--caramel:#B8956A;
+    --gold:#C9A96E;--copper:#A0744F;--chocolate:#6B4226;
+    --dark-choc:#3D2517;--espresso:#2A1A10;--black-bean:#1A0F09;
+    --text-dark:#2A1A10;--text-mid:#6B4226;--text-light:#8B6F5A;
+    --accent:#C9A96E;
+    --radius-sm:8px;--radius-md:16px;--radius-lg:24px;--radius-xl:40px
+}
+html{scroll-behavior:smooth}
+body{font-family:'Manrope',sans-serif;background:var(--cream);color:var(--text-dark);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased}
+::selection{background:rgba(107,66,38,.2);color:var(--espresso)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--sand);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--caramel)}
+
+/* LOADING */
+.loading-screen{position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--espresso);display:flex;align-items:center;justify-content:center;z-index:99999;transition:opacity 1s ease .5s, visibility 1s ease .5s}
+.loading-screen.done{opacity:0;visibility:hidden}
+.loading-content{text-align:center;max-width:600px;padding:2rem}
+.loading-logo{margin-bottom:2rem;opacity:.9}
+.loading-logo img{height:50px}
+.loading-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,2.5vw,1.5rem);font-weight:400;color:var(--sand);font-style:italic;line-height:1.8;margin-bottom:2rem;min-height:3rem;transition:opacity .3s}
+.loading-bar-wrap{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:10px;overflow:hidden;margin:0 auto 1.5rem}
+.loading-bar{height:100%;background:var(--caramel);width:0%;border-radius:10px;transition:width 5s cubic-bezier(.4,0,.2,1)}
+.loading-label{font-size:.65rem;color:rgba(255,255,255,.3);letter-spacing:6px;text-transform:uppercase;font-weight:300}
+
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--caramel);z-index:100001;width:0%;transition:width .1s}
+
+/* CUSTOM CURSOR */
+.cursor-ring{width:32px;height:32px;border:1px solid var(--chocolate);border-radius:50%;position:fixed;pointer-events:none;z-index:99997;transition:transform .2s,opacity .2s,border-color .2s;opacity:.5}
+.cursor-dot{width:5px;height:5px;background:var(--chocolate);border-radius:50%;position:fixed;pointer-events:none;z-index:99998}
+@media(hover:none){.cursor-ring,.cursor-dot{display:none}}
+
+/* HEADER */
+header{position:fixed;width:100%;top:0;z-index:10000;padding:0;transition:all .4s}
+header.scrolled{background:rgba(250,246,240,.95);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(107,66,38,.08)}
+.header-inner{max-width:1400px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 2.5rem;transition:padding .4s}
+header.scrolled .header-inner{padding:.8rem 2.5rem}
+.logo a{display:flex;align-items:center;text-decoration:none}
+.logo img{height:32px;transition:all .3s}
+header.scrolled .logo img{height:28px}
+.nav-links{display:flex;align-items:center;gap:0}
+.nav-link{color:var(--text-dark);text-decoration:none;font-size:.78rem;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:.6rem 1rem;position:relative;transition:all .3s;cursor:pointer;background:none;border:none;font-family:inherit;display:flex;align-items:center;gap:4px}
+.nav-link::after{content:'';position:absolute;bottom:0;left:1rem;right:1rem;height:1px;background:var(--chocolate);transform:scaleX(0);transition:transform .3s;transform-origin:left}
+.nav-link:hover{color:var(--chocolate)}
+.nav-link:hover::after{transform:scaleX(1)}
+.nav-arrow{font-size:.45rem;transition:transform .3s;opacity:.5}
+.nav-item{position:relative}
+.nav-item.dd-open .nav-arrow{transform:rotate(180deg)}
+.nav-item.dd-open .nav-link{color:var(--chocolate)}
+
+/* Dropdown */
+.nav-dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:240px;background:var(--cream);border:1px solid rgba(107,66,38,.1);border-radius:var(--radius-md);padding:8px;opacity:0;visibility:hidden;pointer-events:none;transition:all .3s;box-shadow:0 20px 60px rgba(42,26,16,.1);z-index:10001}
+.nav-dropdown::before{content:'';position:absolute;top:-10px;left:0;width:100%;height:10px}
+.nav-item.dd-open>.nav-dropdown{opacity:1;visibility:visible;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.dd-link{display:flex;align-items:center;gap:12px;padding:12px 16px;color:var(--text-mid);text-decoration:none;font-size:.82rem;border-radius:10px;transition:all .25s;font-weight:400}
+.dd-link:hover{background:rgba(107,66,38,.05);color:var(--espresso);padding-left:20px}
+.dd-link-icon{font-size:1rem;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:rgba(107,66,38,.06);border-radius:8px;flex-shrink:0}
+.dd-link-text{display:flex;flex-direction:column}
+.dd-link-title{font-weight:600;color:var(--text-dark);font-size:.8rem}
+.dd-link-desc{font-size:.65rem;color:var(--text-light);margin-top:2px}
+.dd-divider{height:1px;background:rgba(107,66,38,.06);margin:4px 12px}
+
+/* Mega */
+.nav-mega{position:fixed;top:60px;left:50%;transform:translateX(-50%) translateY(8px);width:750px;max-width:calc(100vw - 2rem);background:var(--cream);border:1px solid rgba(107,66,38,.08);border-radius:var(--radius-lg);padding:2rem;opacity:0;visibility:hidden;pointer-events:none;transition:all .35s;box-shadow:0 30px 80px rgba(42,26,16,.12);z-index:10001}
+.nav-mega::before{content:'';position:absolute;top:-12px;left:0;width:100%;height:12px}
+.nav-item.dd-open>.nav-mega{opacity:1;visibility:visible;pointer-events:all;transform:translateX(-50%) translateY(0)}
+.mega-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+.mega-col-label{font-size:.6rem;font-weight:700;color:var(--caramel);text-transform:uppercase;letter-spacing:3px;margin-bottom:12px;padding:0 16px}
+.mega-cta-box{background:var(--ivory);border-radius:var(--radius-md);padding:1.5rem;display:flex;flex-direction:column;justify-content:center}
+.mega-cta-title{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--espresso);margin-bottom:.5rem}
+.mega-cta-desc{font-size:.72rem;color:var(--text-light);line-height:1.6;margin-bottom:1rem}
+.mega-cta-link{color:var(--chocolate);font-size:.75rem;font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .3s}
+.mega-cta-link:hover{gap:12px}
+
+.header-actions{display:flex;align-items:center;gap:6px}
+.header-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--text-dark);text-decoration:none;font-size:.85rem;transition:all .3s;cursor:pointer;background:none;border:none}
+.header-icon:hover{background:rgba(107,66,38,.06);color:var(--chocolate)}
+.header-btn{padding:.55rem 1.2rem;border-radius:var(--radius-xl);font-weight:600;font-size:.72rem;text-decoration:none;transition:all .3s;letter-spacing:1px;text-transform:uppercase;border:none;cursor:pointer;font-family:inherit}
+.header-btn-outline{background:none;color:var(--text-dark);border:1px solid rgba(107,66,38,.2)}
+.header-btn-outline:hover{border-color:var(--chocolate);color:var(--chocolate)}
+.header-btn-fill{background:var(--espresso);color:var(--cream)}
+.header-btn-fill:hover{background:var(--chocolate);transform:translateY(-1px);box-shadow:0 6px 20px rgba(42,26,16,.2)}
+.hamburger{width:36px;height:36px;display:none;align-items:center;justify-content:center;cursor:pointer;border:none;background:none;flex-shrink:0;position:relative}
+.hamburger span{display:block;width:18px;height:1.5px;background:var(--text-dark);border-radius:2px;transition:all .3s;position:absolute}
+.hamburger span:nth-child(1){transform:translateY(-5px)}
+.hamburger span:nth-child(3){transform:translateY(5px)}
+.hamburger.active span:nth-child(1){transform:rotate(45deg)}
+.hamburger.active span:nth-child(2){opacity:0}
+.hamburger.active span:nth-child(3){transform:rotate(-45deg)}
+
+@media(max-width:1100px){
+    .nav-links{display:none!important}
+    .hamburger{display:flex!important}
+    .header-btn-outline{display:none}
+}
+@media(max-width:480px){
+    .header-inner{padding:1rem 1.2rem}
+    .header-btn-fill{font-size:.65rem;padding:.5rem 1rem}
+}
+
+/* MOBILE MENU */
+.mobile-menu{position:fixed;top:0;left:0;width:100%;height:100vh;background:var(--cream);z-index:9999;display:none;opacity:0;transition:opacity .4s;overflow-y:auto;padding:100px 2rem 2rem}
+.mobile-menu.active{display:block;opacity:1}
+.mob-list{list-style:none;max-width:500px;margin:0 auto}
+.mob-item{border-bottom:1px solid rgba(107,66,38,.06)}
+.mob-link{display:flex;align-items:center;justify-content:space-between;padding:18px 0;color:var(--text-dark);text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:500;transition:color .3s;cursor:pointer}
+.mob-link:hover{color:var(--chocolate)}
+.mob-arrow{font-size:.7rem;color:var(--text-light);transition:transform .3s}
+.mob-item.open .mob-arrow{transform:rotate(180deg);color:var(--chocolate)}
+.mob-sub{list-style:none;max-height:0;overflow:hidden;transition:max-height .4s;padding-left:.5rem}
+.mob-item.open .mob-sub{max-height:600px}
+.mob-sub-link{display:flex;align-items:center;gap:10px;padding:10px 0;color:var(--text-light);text-decoration:none;font-size:.9rem;font-family:'Manrope',sans-serif;font-weight:400;transition:all .3s}
+.mob-sub-link:hover{color:var(--chocolate);transform:translateX(6px)}
+.mob-sub-icon{font-size:1rem;width:28px;text-align:center}
+.mob-bottom{max-width:500px;margin:2rem auto 0;display:flex;flex-direction:column;gap:12px}
+.mob-auth{display:flex;gap:10px}
+.mob-auth .btn-full{flex:1;text-align:center;justify-content:center}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;position:relative;overflow:hidden;background:var(--espresso)}
+.hero-media{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+.hero-media iframe{position:absolute;top:50%;left:50%;width:300vw;height:300vh;transform:translate(-50%,-50%);pointer-events:none}
+.hero-overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1}
+.hero-overlay-1{background:linear-gradient(180deg,rgba(26,15,9,.3) 0%,rgba(26,15,9,.15) 30%,rgba(26,15,9,.2) 60%,rgba(26,15,9,.65) 85%,rgba(26,15,9,.95) 100%)}
+.hero-overlay-2{background:radial-gradient(ellipse at center,transparent 40%,rgba(26,15,9,.2) 100%)}
+
+.hero-content{position:relative;z-index:10;max-width:1400px;width:100%;margin:0 auto;padding:0 2.5rem;display:flex;align-items:flex-end;justify-content:flex-start;padding-bottom:8vh;min-height:100vh}
+.hero-text-block{max-width:700px}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;margin-bottom:1.5rem;opacity:0;animation:fadeSlide .8s ease forwards .3s}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--caramel)}
+.hero-eyebrow-text{font-size:.65rem;font-weight:600;letter-spacing:4px;text-transform:uppercase;color:var(--caramel)}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5.5vw,4.5rem);font-weight:300;line-height:1.15;color:var(--cream);margin-bottom:1.5rem;opacity:0;animation:fadeSlide .8s ease forwards .5s}
+.hero h1 em{font-style:italic;color:var(--caramel);font-weight:400}
+.hero-desc{font-size:clamp(.85rem,1.3vw,.95rem);color:rgba(250,246,240,.6);line-height:1.9;margin-bottom:2rem;max-width:500px;opacity:0;animation:fadeSlide .8s ease forwards .7s;font-weight:300}
+.hero-cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem;opacity:0;animation:fadeSlide .8s ease forwards .9s}
+.btn-hero-primary{padding:.9rem 2rem;background:var(--caramel);color:var(--espresso);border-radius:var(--radius-xl);font-weight:600;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .4s;border:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
+.btn-hero-primary:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.btn-hero-outline{padding:.9rem 2rem;background:none;color:var(--cream);border:1px solid rgba(250,246,240,.25);border-radius:var(--radius-xl);font-weight:500;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .4s;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
+.btn-hero-outline:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-2px)}
+
+.hero-stats-row{display:flex;gap:2.5rem;opacity:0;animation:fadeSlide .8s ease forwards 1.1s}
+.hero-stat{text-align:left}
+.hero-stat-num{font-family:'Cormorant Garamond',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:300;color:var(--caramel);display:block;line-height:1}
+.hero-stat-label{font-size:.65rem;color:rgba(250,246,240,.4);letter-spacing:1px;text-transform:uppercase;font-weight:400;margin-top:4px}
+.hero-stat+.hero-stat{padding-left:2.5rem;border-left:1px solid rgba(250,246,240,.1)}
+
+@keyframes fadeSlide{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+/* MARQUEE */
+.marquee-strip{padding:22px 0;border-top:1px solid rgba(107,66,38,.06);border-bottom:1px solid rgba(107,66,38,.06);overflow:hidden;background:var(--cream)}
+.marquee-track{display:flex;animation:marqueeScroll 40s linear infinite;width:max-content}
+.marquee-word{padding:0 2.5rem;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:400;color:var(--sand);display:flex;align-items:center;gap:2.5rem;white-space:nowrap;transition:color .3s}
+.marquee-word:hover{color:var(--chocolate)}
+.marquee-dot{width:4px;height:4px;background:var(--caramel);border-radius:50%;opacity:.3}
+@keyframes marqueeScroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* SECTION COMMON */
+.section{padding:120px 2.5rem;position:relative}
+.section-header{text-align:center;max-width:650px;margin:0 auto 5rem}
+.section-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.6rem;font-weight:700;color:var(--caramel);text-transform:uppercase;letter-spacing:4px;margin-bottom:1rem}
+.section-eyebrow-line{width:30px;height:1px;background:var(--caramel)}
+.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:300;color:var(--text-dark);margin-bottom:1rem;line-height:1.2}
+.section-title em{font-style:italic;color:var(--chocolate);font-weight:400}
+.section-desc{font-size:.92rem;color:var(--text-light);line-height:1.9;font-weight:300}
+
+/* ABOUT */
+.about-section{background:var(--cream)}
+.about-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:5fr 6fr;gap:80px;align-items:center}
+.about-img-wrap{position:relative}
+.about-img{border-radius:var(--radius-lg);overflow:hidden;aspect-ratio:3/4}
+.about-img img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform .6s}
+.about-img:hover img{transform:scale(1.03)}
+.about-badge{position:absolute;bottom:-16px;right:-16px;background:var(--espresso);color:var(--cream);border-radius:var(--radius-md);padding:20px 24px;text-align:center}
+.about-badge-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--caramel)}
+.about-badge-txt{font-size:.6rem;letter-spacing:2px;text-transform:uppercase;color:rgba(250,246,240,.5);font-weight:400}
+.about-eyebrow{display:flex;align-items:center;gap:12px;font-size:.6rem;font-weight:700;color:var(--caramel);text-transform:uppercase;letter-spacing:4px;margin-bottom:1.2rem}
+.about-eyebrow-line{width:30px;height:1px;background:var(--caramel)}
+.about-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:300;color:var(--text-dark);margin-bottom:1.5rem;line-height:1.2}
+.about-heading em{font-style:italic;color:var(--chocolate);font-weight:400}
+.about-body{font-size:.9rem;color:var(--text-light);line-height:1.9;margin-bottom:1rem;font-weight:300}
+.about-quote-block{padding:1.5rem 0 1.5rem 1.5rem;margin:1.5rem 0;border-left:2px solid var(--caramel)}
+.about-quote-block p{font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-style:italic;color:var(--text-dark);line-height:1.6;font-weight:400}
+.about-quote-block cite{display:block;margin-top:8px;font-size:.75rem;font-style:normal;color:var(--caramel);letter-spacing:1px}
+.btn-underline{display:inline-flex;align-items:center;gap:8px;color:var(--chocolate);font-weight:600;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;position:relative;padding-bottom:4px;border-bottom:1px solid var(--chocolate);transition:all .3s}
+.btn-underline:hover{gap:14px;color:var(--caramel);border-color:var(--caramel)}
+
+/* PROGRAMS */
+.programs-section{background:var(--ivory)}
+.programs-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.program-card{background:var(--cream);padding:2.5rem 2rem;border-radius:var(--radius-lg);border:1px solid rgba(107,66,38,.06);transition:all .5s;position:relative;overflow:hidden}
+.program-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px;background:var(--caramel);transform:scaleX(0);transition:transform .5s;transform-origin:left}
+.program-card:hover{transform:translateY(-8px);box-shadow:0 24px 64px rgba(42,26,16,.08);border-color:rgba(107,66,38,.12)}
+.program-card:hover::before{transform:scaleX(1)}
+.program-icon{font-size:2rem;margin-bottom:1.5rem}
+.program-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--text-dark);margin-bottom:.8rem}
+.program-desc{color:var(--text-light);line-height:1.8;margin-bottom:1.5rem;font-size:.85rem;font-weight:300}
+.program-features{list-style:none;margin-bottom:1.8rem}
+.program-features li{padding:.55rem 0;color:var(--text-light);font-size:.8rem;display:flex;align-items:center;gap:.7rem;border-bottom:1px solid rgba(107,66,38,.04);font-weight:400}
+.program-features li::before{content:'—';color:var(--caramel);font-weight:300}
+.btn-card{display:inline-flex;align-items:center;gap:6px;color:var(--chocolate);font-weight:600;font-size:.75rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .3s}
+.btn-card:hover{gap:12px;color:var(--caramel)}
+
+/* BOOKS */
+.books-section{background:var(--cream)}
+.books-grid{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:20px}
+.book-card{background:var(--warm-white);border-radius:var(--radius-lg);overflow:hidden;transition:all .5s;border:1px solid rgba(107,66,38,.04);display:flex;flex-direction:column}
+.book-card:hover{transform:translateY(-10px);box-shadow:0 30px 70px rgba(42,26,16,.1);border-color:rgba(107,66,38,.1)}
+.book-cover{width:100%;height:280px;overflow:hidden;position:relative;background:var(--ivory);display:flex;align-items:center;justify-content:center;padding:1.5rem}
+.book-cover img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .5s;filter:drop-shadow(0 8px 20px rgba(42,26,16,.15))}
+.book-card:hover .book-cover img{transform:scale(1.06)}
+.book-tag{position:absolute;top:.8rem;right:.8rem;background:var(--espresso);color:var(--caramel);padding:.3rem .8rem;border-radius:var(--radius-xl);font-size:.55rem;font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.book-info{padding:1.3rem;flex:1;display:flex;flex-direction:column}
+.book-stars{margin-bottom:.4rem;font-size:.7rem;color:var(--caramel)}
+.book-name{font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--text-dark);margin-bottom:.4rem;line-height:1.3}
+.book-excerpt{color:var(--text-light);line-height:1.7;margin-bottom:.8rem;font-size:.75rem;flex:1;font-weight:300}
+.book-stats{display:flex;gap:.8rem;margin-bottom:1rem;font-size:.68rem;color:var(--text-light);flex-wrap:wrap}
+.book-stats strong{color:var(--chocolate)}
+.btn-book{display:inline-flex;align-items:center;gap:6px;padding:.6rem 1.2rem;border-radius:var(--radius-xl);background:var(--espresso);color:var(--caramel);font-weight:600;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:all .3s;border:none;cursor:pointer;font-family:inherit}
+.btn-book:hover{background:var(--chocolate);color:var(--cream);transform:translateY(-1px)}
+
+/* QUOTE SECTION */
+.quote-section{padding:140px 2.5rem;background:var(--espresso);text-align:center;position:relative;overflow:hidden}
+.quote-watermark{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Cormorant Garamond',serif;font-size:20rem;font-weight:300;color:rgba(250,246,240,.02);pointer-events:none}
+.quote-mark{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--caramel);opacity:.3;margin-bottom:1rem}
+.quote-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,3vw,2.2rem);font-weight:300;line-height:1.5;max-width:800px;margin:0 auto 1.5rem;color:var(--cream);position:relative;z-index:2}
+.quote-text em{font-style:italic;color:var(--caramel)}
+.quote-cite{font-size:.7rem;color:var(--caramel);letter-spacing:4px;text-transform:uppercase;font-weight:400}
+
+/* TESTIMONIALS */
+.testimonials-section{background:var(--ivory)}
+.testimonials-wrap{max-width:1200px;margin:0 auto}
+.t-carousel{position:relative;overflow:hidden;padding:1rem 0}
+.t-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.t-slide{min-width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:0 4px}
+.t-card{background:var(--cream);padding:2rem;border-radius:var(--radius-lg);border:1px solid rgba(107,66,38,.06);transition:all .4s;display:flex;flex-direction:column}
+.t-card:hover{border-color:rgba(107,66,38,.12);box-shadow:0 16px 48px rgba(42,26,16,.06)}
+.t-quote-mark{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--caramel);opacity:.4;margin-bottom:.3rem;line-height:1}
+.t-stars{display:flex;gap:2px;margin-bottom:.8rem}
+.t-stars span{color:var(--caramel);font-size:.75rem}
+.t-body{font-size:.85rem;color:var(--text-light);line-height:1.8;margin-bottom:1.5rem;font-style:italic;font-weight:300;flex:1}
+.t-author{display:flex;align-items:center;gap:10px;margin-top:auto}
+.t-avatar{width:40px;height:40px;border-radius:50%;background:var(--ivory);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:.9rem;font-weight:600;color:var(--chocolate);flex-shrink:0}
+.t-name{font-size:.82rem;font-weight:600;color:var(--text-dark)}
+.t-role{font-size:.68rem;color:var(--text-light);margin-top:2px}
+.carousel-controls{display:flex;justify-content:center;gap:12px;margin-top:2.5rem;align-items:center}
+.carousel-btn{width:44px;height:44px;border-radius:50%;background:var(--cream);border:1px solid rgba(107,66,38,.12);color:var(--chocolate);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .3s;font-size:1rem;font-family:inherit}
+.carousel-btn:hover{background:var(--espresso);color:var(--caramel);border-color:var(--espresso)}
+.carousel-dots{display:flex;gap:6px;align-items:center}
+.carousel-dot{width:6px;height:6px;border-radius:50%;background:var(--sand);cursor:pointer;transition:all .3s}
+.carousel-dot.active{background:var(--chocolate);width:24px;border-radius:3px}
+
+/* FEATURED TESTIMONIAL */
+.featured-t{max-width:900px;margin:3rem auto 0;background:var(--cream);border-radius:var(--radius-lg);border:1px solid rgba(107,66,38,.08);padding:2.5rem;position:relative;overflow:hidden}
+.featured-t::before{content:'"';position:absolute;top:-10px;right:30px;font-family:'Cormorant Garamond',serif;font-size:10rem;color:rgba(107,66,38,.04);line-height:1;pointer-events:none}
+.ft-label{font-size:.6rem;font-weight:700;color:var(--caramel);letter-spacing:4px;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+.ft-label::before{content:'';width:20px;height:1px;background:var(--caramel)}
+.ft-body{font-size:.88rem;color:var(--text-light);line-height:1.9;margin-bottom:1.5rem;font-weight:300;position:relative;z-index:1}
+.ft-author{display:flex;align-items:center;gap:12px;position:relative;z-index:1}
+.ft-avatar{width:48px;height:48px;border-radius:50%;background:var(--ivory);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;color:var(--chocolate)}
+.ft-name{font-size:.88rem;font-weight:600;color:var(--text-dark)}
+.ft-role{font-size:.72rem;color:var(--text-light);margin-top:2px}
+.ft-carousel{position:relative;overflow:hidden}
+.ft-track{display:flex;transition:transform .6s cubic-bezier(.4,0,.2,1)}
+.ft-slide{min-width:100%}
+
+/* CTA */
+.cta-section{padding:140px 2.5rem;background:var(--espresso);text-align:center;position:relative;overflow:hidden}
+.cta-glow{position:absolute;width:500px;height:500px;border-radius:50%;background:var(--caramel);filter:blur(250px);opacity:.06;top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+.cta-inner{position:relative;z-index:2}
+.cta-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:.6rem;font-weight:700;color:var(--caramel);text-transform:uppercase;letter-spacing:4px;margin-bottom:1.5rem;justify-content:center}
+.cta-eyebrow-line{width:30px;height:1px;background:var(--caramel)}
+.cta-heading{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,4.5vw,3.5rem);font-weight:300;color:var(--cream);margin-bottom:1rem;line-height:1.2}
+.cta-heading em{font-style:italic;color:var(--caramel)}
+.cta-desc{font-size:.95rem;color:rgba(250,246,240,.5);margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.9;font-weight:300}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-cta-primary{padding:1rem 2.2rem;background:var(--caramel);color:var(--espresso);border-radius:var(--radius-xl);font-weight:700;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .4s;border:none;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
+.btn-cta-primary:hover{background:var(--cream);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.btn-cta-outline{padding:1rem 2.2rem;background:none;color:var(--cream);border:1px solid rgba(250,246,240,.2);border-radius:var(--radius-xl);font-weight:600;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;text-decoration:none;transition:all .4s;cursor:pointer;font-family:inherit;display:inline-flex;align-items:center;gap:8px}
+.btn-cta-outline:hover{border-color:var(--caramel);color:var(--caramel);transform:translateY(-2px)}
+
+/* FOOTER */
+footer{background:var(--black-bean);padding:80px 2.5rem 40px;border-top:1px solid rgba(201,169,110,.04)}
+.footer-grid{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2.5fr 1fr 1fr 1fr;gap:50px;margin-bottom:50px}
+.footer-brand{max-width:300px}
+.footer-logo-img{height:36px;margin-bottom:16px}
+.footer-about{font-size:.82rem;color:rgba(250,246,240,.35);line-height:1.9;margin-bottom:20px;font-weight:300}
+.footer-social{display:flex;gap:8px}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(250,246,240,.05);display:flex;align-items:center;justify-content:center;color:rgba(250,246,240,.4);text-decoration:none;font-size:.8rem;transition:all .3s;border:1px solid rgba(250,246,240,.06)}
+.footer-social a:hover{background:var(--caramel);color:var(--espresso);border-color:var(--caramel)}
+.footer-col h4{font-size:.6rem;font-weight:700;color:rgba(250,246,240,.5);letter-spacing:3px;text-transform:uppercase;margin-bottom:18px}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{color:rgba(250,246,240,.35);text-decoration:none;font-size:.82rem;transition:color .3s;font-weight:300}
+.footer-col a:hover{color:var(--caramel)}
+.footer-divider{max-width:1200px;margin:0 auto;height:1px;background:rgba(250,246,240,.04);margin-bottom:24px}
+.footer-bottom{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.footer-bottom p{font-size:.68rem;color:rgba(250,246,240,.2);font-weight:300}
+.footer-bottom-links{display:flex;gap:20px}
+.footer-bottom-links a{font-size:.68rem;color:rgba(250,246,240,.2);text-decoration:none;transition:color .3s;font-weight:300}
+.footer-bottom-links a:hover{color:var(--caramel)}
+
+/* BACK TO TOP */
+.back-to-top{position:fixed;bottom:32px;right:32px;width:42px;height:42px;border-radius:50%;background:var(--cream);border:1px solid rgba(107,66,38,.1);color:var(--chocolate);display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:100;opacity:0;visibility:hidden;transition:all .3s;font-size:.9rem;box-shadow:0 4px 16px rgba(42,26,16,.1)}
+.back-to-top.visible{opacity:1;visibility:visible}
+.back-to-top:hover{background:var(--espresso);color:var(--caramel);border-color:var(--espresso);transform:translateY(-3px)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s cubic-bezier(.4,0,.2,1)}
+.reveal.active{opacity:1;transform:translateY(0)}
+.rd1{transition-delay:.1s}.rd2{transition-delay:.2s}.rd3{transition-delay:.3s}
+
+/* RESPONSIVE */
+@media(max-width:1200px){.programs-grid{grid-template-columns:repeat(2,1fr)}.books-grid{grid-template-columns:repeat(3,1fr)}.t-slide{grid-template-columns:repeat(2,1fr)}.t-slide .t-card:nth-child(3){display:none}}
+@media(max-width:992px){.section{padding:80px 1.5rem}.about-grid{grid-template-columns:1fr;gap:40px}.footer-grid{grid-template-columns:1fr 1fr;gap:30px}.quote-section{padding:80px 1.5rem}.books-grid{grid-template-columns:repeat(2,1fr)}.hero-content{padding:0 1.5rem;padding-bottom:6vh}}
+@media(max-width:768px){.programs-grid{grid-template-columns:1fr}.books-grid{grid-template-columns:repeat(2,1fr)}.t-slide{grid-template-columns:1fr}.t-slide .t-card:nth-child(2),.t-slide .t-card:nth-child(3){display:none}.hero-stats-row{flex-wrap:wrap;gap:1.5rem}.hero-stat+.hero-stat{padding-left:0;border-left:none}.footer-grid{grid-template-columns:1fr;gap:24px}.footer-bottom{flex-direction:column;text-align:center}.cta-btns{flex-direction:column;align-items:center}}
+@media(max-width:480px){.hero h1{font-size:1.8rem}.hero-cta-row{flex-direction:column;align-items:flex-start}.hero-stats-row{gap:1rem}.books-grid{grid-template-columns:1fr}.hero-content{padding:0 1.2rem;padding-bottom:5vh}.section{padding:60px 1.2rem}.header-inner{padding:1rem 1.2rem}}
+</style>
+</head>
+<body>
+
+<div class="scroll-progress" id="scrollProgress"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- LOADING -->
+<div class="loading-screen" id="loadingScreen">
+    <div class="loading-content">
+        <div class="loading-logo"><img src="https://shivkhera.com/wp-content/uploads/2024/03/Shiv-Khera-Logo-White-2.png" alt="Shiv Khera"></div>
+        <div class="loading-quote" id="loadingQuote">"Winners don't do different things, they do things differently®"</div>
+        <div class="loading-bar-wrap"><div class="loading-bar" id="loadingBar"></div></div>
+        <div class="loading-label">Preparing Excellence</div>
+    </div>
+</div>
+
+<!-- HEADER -->
+<header id="siteHeader">
+    <div class="header-inner">
+        <div class="logo"><a href="#"><img src="https://shivkhera.com/wp-content/uploads/2024/03/Shiv-Khera-Logo-White-2.png" alt="Shiv Khera" style="filter:invert(1)"></a></div>
+        <nav class="nav-links" id="navLinks">
+            <div class="nav-item"><a href="#about" class="nav-link">About</a></div>
+            <div class="nav-item" data-dropdown="programs">
+                <button class="nav-link">Programs <span class="nav-arrow">▼</span></button>
+                <div class="nav-mega">
+                    <div class="mega-grid">
+                        <div>
+                            <div class="mega-col-label">Corporate</div>
+                            <a href="#programs" class="dd-link"><span class="dd-link-icon">🎯</span><span class="dd-link-text"><span class="dd-link-title">Hi-Impact Leadership</span><span class="dd-link-desc">Transform organizational leadership</span></span></a>
+                            <a href="#programs" class="dd-link"><span class="dd-link-icon">🎤</span><span class="dd-link-text"><span class="dd-link-title">Public Speaking</span><span class="dd-link-desc">Master impactful communication</span></span></a>
+                            <a href="#programs" class="dd-link"><span class="dd-link-icon">🤝</span><span class="dd-link-text"><span class="dd-link-title">Gain & Retain Customers</span><span class="dd-link-desc">Customer excellence strategies</span></span></a>
+                        </div>
+                        <div>
+                            <div class="mega-col-label">Education</div>
+                            <a href="#programs" class="dd-link"><span class="dd-link-icon">🎓</span><span class="dd-link-text"><span class="dd-link-title">Leadership for Colleges</span><span class="dd-link-desc">Empowering future leaders</span></span></a>
+                            <a href="#programs" class="dd-link"><span class="dd-link-icon">📚</span><span class="dd-link-text"><span class="dd-link-title">Leadership for Schools</span><span class="dd-link-desc">Building character early</span></span></a>
+                            <a href="#programs" class="dd-link"><span class="dd-link-icon">👨‍👩‍👧</span><span class="dd-link-text"><span class="dd-link-title">Positive Parenting</span><span class="dd-link-desc">Raise confident children</span></span></a>
+                        </div>
+                        <div class="mega-cta-box">
+                            <div class="mega-cta-title">Custom Programs</div>
+                            <div class="mega-cta-desc">Tailored programs with 40+ years of proven impact for your organization.</div>
+                            <a href="#contact" class="mega-cta-link">Book Consultation →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="nav-item"><a href="#programs" class="nav-link">Keynotes</a></div>
+            <div class="nav-item"><a href="#contact" class="nav-link">Consulting</a></div>
+            <div class="nav-item"><a href="#" class="nav-link">Academy</a></div>
+            <div class="nav-item" data-dropdown="media">
+                <button class="nav-link">Media <span class="nav-arrow">▼</span></button>
+                <div class="nav-dropdown">
+                    <a href="#" class="dd-link"><span class="dd-link-icon">📰</span><span class="dd-link-text"><span class="dd-link-title">News</span></span></a>
+                    <a href="#" class="dd-link"><span class="dd-link-icon">🎙️</span><span class="dd-link-text"><span class="dd-link-title">Interviews</span></span></a>
+                    <a href="#" class="dd-link"><span class="dd-link-icon">📝</span><span class="dd-link-text"><span class="dd-link-title">Articles</span></span></a>
+                    <div class="dd-divider"></div>
+                    <a href="#" class="dd-link"><span class="dd-link-icon">📅</span><span class="dd-link-text"><span class="dd-link-title">Events</span></span></a>
+                </div>
+            </div>
+            <div class="nav-item" data-dropdown="resources">
+                <button class="nav-link">Resources <span class="nav-arrow">▼</span></button>
+                <div class="nav-dropdown">
+                    <a href="#" class="dd-link"><span class="dd-link-icon">✍️</span><span class="dd-link-text"><span class="dd-link-title">Blogs</span></span></a>
+                    <a href="#" class="dd-link"><span class="dd-link-icon">🎬</span><span class="dd-link-text"><span class="dd-link-title">Videos</span></span></a>
+                    <a href="#testimonials" class="dd-link"><span class="dd-link-icon">⭐</span><span class="dd-link-text"><span class="dd-link-title">Testimonials</span></span></a>
+                </div>
+            </div>
+            <div class="nav-item"><a href="#books" class="nav-link">Books</a></div>
+        </nav>
+        <div class="header-actions">
+            <a href="#" class="header-icon" title="Shop">🛒</a>
+            <a href="#" class="header-btn header-btn-outline">Log In</a>
+            <a href="#" class="header-btn header-btn-fill">Sign Up</a>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <ul class="mob-list">
+        <li class="mob-item"><a href="#about" class="mob-link">About</a></li>
+        <li class="mob-item has-sub"><div class="mob-link" onclick="this.parentElement.classList.toggle('open')">Programs <span class="mob-arrow">▼</span></div><ul class="mob-sub"><li><a href="#programs" class="mob-sub-link"><span class="mob-sub-icon">🎯</span>Hi-Impact Leadership</a></li><li><a href="#programs" class="mob-sub-link"><span class="mob-sub-icon">🎤</span>Public Speaking</a></li><li><a href="#programs" class="mob-sub-link"><span class="mob-sub-icon">🤝</span>Gain & Retain Customers</a></li><li><a href="#programs" class="mob-sub-link"><span class="mob-sub-icon">🎓</span>Leadership for Colleges</a></li><li><a href="#programs" class="mob-sub-link"><span class="mob-sub-icon">📚</span>Leadership for Schools</a></li><li><a href="#programs" class="mob-sub-link"><span class="mob-sub-icon">👨‍👩‍👧</span>Positive Parenting</a></li></ul></li>
+        <li class="mob-item"><a href="#programs" class="mob-link">Keynotes</a></li>
+        <li class="mob-item"><a href="#contact" class="mob-link">Consulting</a></li>
+        <li class="mob-item"><a href="#" class="mob-link">Academy</a></li>
+        <li class="mob-item has-sub"><div class="mob-link" onclick="this.parentElement.classList.toggle('open')">Media <span class="mob-arrow">▼</span></div><ul class="mob-sub"><li><a href="#" class="mob-sub-link"><span class="mob-sub-icon">📰</span>News</a></li><li><a href="#" class="mob-sub-link"><span class="mob-sub-icon">🎙️</span>Interviews</a></li><li><a href="#" class="mob-sub-link"><span class="mob-sub-icon">📝</span>Articles</a></li></ul></li>
+        <li class="mob-item has-sub"><div class="mob-link" onclick="this.parentElement.classList.toggle('open')">Resources <span class="mob-arrow">▼</span></div><ul class="mob-sub"><li><a href="#" class="mob-sub-link"><span class="mob-sub-icon">✍️</span>Blogs</a></li><li><a href="#" class="mob-sub-link"><span class="mob-sub-icon">🎬</span>Videos</a></li><li><a href="#testimonials" class="mob-sub-link"><span class="mob-sub-icon">⭐</span>Testimonials</a></li></ul></li>
+        <li class="mob-item"><a href="#books" class="mob-link">Books</a></li>
+        <li class="mob-item"><a href="#" class="mob-link">Shop</a></li>
+    </ul>
+    <div class="mob-bottom">
+        <div class="mob-auth"><a href="#" class="btn-hero-outline btn-full" style="justify-content:center;color:var(--text-dark);border-color:rgba(107,66,38,.2)">Log In</a><a href="#" class="btn-hero-primary btn-full" style="justify-content:center">Sign Up</a></div>
+        <a href="#contact" class="btn-hero-primary" style="width:100%;justify-content:center">Contact Us →</a>
+    </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+    <div class="hero-media">
+        <iframe id="ytPlayer" src="https://www.youtube.com/embed/esCFmO3rllY?autoplay=1&mute=1&controls=0&showinfo=0&rel=0&loop=1&playlist=esCFmO3rllY&start=108&end=642&modestbranding=1&playsinline=1&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <div class="hero-overlay hero-overlay-1"></div>
+        <div class="hero-overlay hero-overlay-2"></div>
+    </div>
+    <div class="hero-content">
+        <div class="hero-text-block">
+            <div class="hero-eyebrow">
+                <span class="hero-eyebrow-line"></span>
+                <span class="hero-eyebrow-text">International Bestselling Author & Speaker</span>
+            </div>
+            <h1>Winners don't do <em>different things,</em> they do things <em>differently.</em></h1>
+            <p class="hero-desc">Join over 15 million people worldwide who achieved extraordinary success through leadership, positive thinking, and personal excellence.</p>
+            <div class="hero-cta-row">
+                <a href="#programs" class="btn-hero-primary">Explore Programs →</a>
+                <a href="#books" class="btn-hero-outline">View Books 📚</a>
+            </div>
+            <div class="hero-stats-row">
+                <div class="hero-stat"><span class="hero-stat-num" data-count="15">0+</span><span class="hero-stat-label">Million Copies Sold</span></div>
+                <div class="hero-stat"><span class="hero-stat-num" data-count="21">0+</span><span class="hero-stat-label">Languages</span></div>
+                <div class="hero-stat"><span class="hero-stat-num" data-count="87">0+</span><span class="hero-stat-label">Countries</span></div>
+                <div class="hero-stat"><span class="hero-stat-num" data-count="40">0+</span><span class="hero-stat-label">Years of Impact</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip">
+    <div class="marquee-track">
+        <span class="marquee-word">Author <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Educator <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Motivational Speaker <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Business Consultant <span class="marquee-dot"></span></span>
+        <span class="marquee-word">You Can Win <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Living With Honor <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Freedom Is Not Free <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Social Activist <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Author <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Educator <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Motivational Speaker <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Business Consultant <span class="marquee-dot"></span></span>
+        <span class="marquee-word">You Can Win <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Living With Honor <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Freedom Is Not Free <span class="marquee-dot"></span></span>
+        <span class="marquee-word">Social Activist <span class="marquee-dot"></span></span>
+    </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section about-section" id="about">
+    <div class="about-grid">
+        <div class="about-img-wrap reveal">
+            <div class="about-img">
+                <img src="https://shivkhera.com/wp-content/uploads/elementor/thumbs/shiv-khera-about-2-qqbatlmeod2gwdm6h8x8pzb9yk62usbdqa6lu77tpw.jpg" alt="Shiv Khera">
+            </div>
+            <div class="about-badge">
+                <div class="about-badge-num">40+</div>
+                <div class="about-badge-txt">Years of Excellence</div>
+            </div>
+        </div>
+        <div class="reveal rd2">
+            <div class="about-eyebrow"><span class="about-eyebrow-line"></span>About Shiv Khera</div>
+            <h2 class="about-heading">Transforming Lives Through <em>Wisdom & Action</em></h2>
+            <p class="about-body">Shiv Khera is the founder of Qualified Learning Systems Inc. USA, a globally recognized author, educator, business consultant, and one of the most sought-after motivational speakers in the world.</p>
+            <p class="about-body">An author of 18 books, including the international bestseller <strong style="color:var(--text-dark)">"You Can Win"</strong> which has sold over 15 million copies and has been translated into 21 languages across 87 countries.</p>
+            <div class="about-quote-block">
+                <p>"Your positive action combined with positive thinking results in success."</p>
+                <cite>— Shiv Khera</cite>
+            </div>
+            <a href="#programs" class="btn-underline">Explore Programs →</a>
+        </div>
+    </div>
+</section>
+
+<!-- PROGRAMS -->
+<section class="section programs-section" id="programs">
+    <div class="section-header reveal">
+        <div class="section-eyebrow"><span class="section-eyebrow-line"></span>Transformational Programs<span class="section-eyebrow-line"></span></div>
+        <h2 class="section-title">Master the Art of <em>Winning</em></h2>
+        <p class="section-desc">Comprehensive programs designed to unlock your full potential and drive extraordinary results.</p>
+    </div>
+    <div class="programs-grid">
+        <div class="program-card reveal rd1">
+            <div class="program-icon">🎯</div>
+            <h3 class="program-title">Hi-Impact Leadership</h3>
+            <p class="program-desc">Build transformational leaders who inspire teams and drive extraordinary results.</p>
+            <ul class="program-features"><li>Vision & Strategic Planning</li><li>Team Building & Motivation</li><li>Decision Making Frameworks</li><li>Communication Excellence</li></ul>
+            <a href="#contact" class="btn-card">Learn More →</a>
+        </div>
+        <div class="program-card reveal rd2">
+            <div class="program-icon">🎤</div>
+            <h3 class="program-title">Public Speaking & Presentation</h3>
+            <p class="program-desc">Master the art of impactful communication and presentation skills.</p>
+            <ul class="program-features"><li>Audience Engagement</li><li>Storytelling Mastery</li><li>Stage Presence</li><li>Persuasive Speaking</li></ul>
+            <a href="#contact" class="btn-card">Learn More →</a>
+        </div>
+        <div class="program-card reveal rd3">
+            <div class="program-icon">🤝</div>
+            <h3 class="program-title">Gain & Retain Customers</h3>
+            <p class="program-desc">Proven strategies for customer acquisition, satisfaction, and loyalty.</p>
+            <ul class="program-features"><li>Customer-First Mindset</li><li>Relationship Building</li><li>Sales Excellence</li><li>Service Recovery</li></ul>
+            <a href="#contact" class="btn-card">Learn More →</a>
+        </div>
+        <div class="program-card reveal rd1">
+            <div class="program-icon">🎓</div>
+            <h3 class="program-title">Leadership for Colleges</h3>
+            <p class="program-desc">Empowering tomorrow's leaders with character, values, and purpose.</p>
+            <ul class="program-features"><li>Self-Esteem Development</li><li>Goal Setting & Achievement</li><li>Critical Thinking</li><li>Career Readiness</li></ul>
+            <a href="#contact" class="btn-card">Learn More →</a>
+        </div>
+        <div class="program-card reveal rd2">
+            <div class="program-icon">📚</div>
+            <h3 class="program-title">Leadership for Schools</h3>
+            <p class="program-desc">Building character, confidence, and leadership from an early age.</p>
+            <ul class="program-features"><li>Values & Character Building</li><li>Positive Attitude</li><li>Anti-Bullying Programs</li><li>Student Motivation</li></ul>
+            <a href="#contact" class="btn-card">Learn More →</a>
+        </div>
+        <div class="program-card reveal rd3">
+            <div class="program-icon">👨‍👩‍👧</div>
+            <h3 class="program-title">Positive Parenting</h3>
+            <p class="program-desc">Raise confident, responsible children through positive parenting principles.</p>
+            <ul class="program-features"><li>Communication with Children</li><li>Building Self-Esteem</li><li>Setting Boundaries</li><li>Leading by Example</li></ul>
+            <a href="#contact" class="btn-card">Learn More →</a>
+        </div>
+    </div>
+</section>
+
+<!-- BOOKS -->
+<section class="section books-section" id="books">
+    <div class="section-header reveal">
+        <div class="section-eyebrow"><span class="section-eyebrow-line"></span>Published Works<span class="section-eyebrow-line"></span></div>
+        <h2 class="section-title">Life-Changing <em>Books</em></h2>
+        <p class="section-desc">Words that have inspired millions across the globe, translated into 21 languages.</p>
+    </div>
+    <div class="books-grid">
+        <div class="book-card reveal rd1">
+            <div class="book-cover"><img src="https://shivkhera.com/wp-content/uploads/2024/03/You-Can-Win-Book-Covers.jpg" alt="You Can Win"><div class="book-tag">Bestseller</div></div>
+            <div class="book-info"><div class="book-stars">⭐⭐⭐⭐⭐</div><h3 class="book-name">You Can Win</h3><p class="book-excerpt">The international phenomenon inspiring millions through positive attitude.</p><div class="book-stats"><span><strong>15M+</strong> Copies</span><span><strong>21</strong> Languages</span></div><a href="https://www.amazon.com/You-Can-Win-Winners-Losers/dp/9382951008" target="_blank" class="btn-book">Get Book →</a></div>
+        </div>
+        <div class="book-card reveal rd2">
+            <div class="book-cover"><img src="https://shivkhera.com/wp-content/uploads/2024/03/You-Can-Achieve-Cover-300x300.jpg" alt="You Can Achieve More"><div class="book-tag">Popular</div></div>
+            <div class="book-info"><div class="book-stars">⭐⭐⭐⭐⭐</div><h3 class="book-name">You Can Achieve More</h3><p class="book-excerpt">Proven strategies to achieve more in every area of your life.</p><div class="book-stats"><span><strong>5M+</strong> Copies</span><span><strong>18</strong> Languages</span></div><a href="#contact" class="btn-book">Get Book →</a></div>
+        </div>
+        <div class="book-card reveal rd3">
+            <div class="book-cover"><img src="https://shivkhera.com/wp-content/uploads/2024/03/You-Can-Sell-Cover-300x300.jpg" alt="You Can Sell"><div class="book-tag">Essential</div></div>
+            <div class="book-info"><div class="book-stars">⭐⭐⭐⭐⭐</div><h3 class="book-name">You Can Sell</h3><p class="book-excerpt">Master the art of selling with integrity and build lasting relationships.</p><div class="book-stats"><span><strong>4M+</strong> Copies</span><span><strong>16</strong> Languages</span></div><a href="#contact" class="btn-book">Get Book →</a></div>
+        </div>
+        <div class="book-card reveal rd1">
+            <div class="book-cover"><img src="https://shivkhera.com/wp-content/uploads/2025/08/LIVE-WHILE-YOURE-ALIVE-BY-MR-SHIVKHERA-BOOK-COVER.png" alt="Live While You Are Alive"><div class="book-tag">New</div></div>
+            <div class="book-info"><div class="book-stars">⭐⭐⭐⭐⭐</div><h3 class="book-name">Live While You Are Alive</h3><p class="book-excerpt">Timeless principles for living a purposeful and meaningful life.</p><div class="book-stats"><span><strong>Global</strong> Release</span><span><strong>15+</strong> Languages</span></div><a href="#contact" class="btn-book">Get Book →</a></div>
+        </div>
+        <div class="book-card reveal rd2">
+            <div class="book-cover"><img src="https://m.media-amazon.com/images/I/71bdXNr3-mL._AC_UF1000,1000_QL80_.jpg" alt="Freedom Is Not Free"><div class="book-tag">Impact</div></div>
+            <div class="book-info"><div class="book-stars">⭐⭐⭐⭐⭐</div><h3 class="book-name">Freedom Is Not Free</h3><p class="book-excerpt">Freedom, responsibility, and nation-building through individual excellence.</p><div class="book-stats"><span><strong>National</strong> Impact</span><span><strong>10+</strong> Languages</span></div><a href="#contact" class="btn-book">Get Book →</a></div>
+        </div>
+    </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-section">
+    <div class="quote-watermark">INSPIRE</div>
+    <div class="quote-mark reveal">"</div>
+    <p class="quote-text reveal rd1">Under your influence, people should become better <em>husbands</em>, better <em>wives</em>, better <em>sons</em>, better <em>daughters</em>, and better <em>citizens.</em></p>
+    <div class="quote-cite reveal rd2">— Shiv Khera</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials-section" id="testimonials">
+    <div class="section-header reveal">
+        <div class="section-eyebrow"><span class="section-eyebrow-line"></span>Testimonials<span class="section-eyebrow-line"></span></div>
+        <h2 class="section-title">Lives <em>Transformed</em></h2>
+        <p class="section-desc">Real stories from leaders and achievers worldwide.</p>
+    </div>
+    <div class="testimonials-wrap reveal rd1">
+        <div class="t-carousel">
+            <div class="t-track" id="tTrack">
+                <div class="t-slide">
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">The Best of its Kind.</p><div class="t-author"><div class="t-avatar">AK</div><div><div class="t-name">Andre Keller</div><div class="t-role">Chief Executive, Zuellig Pharma, Singapore</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">One of the best motivational seminars I have ever attended.</p><div class="t-author"><div class="t-avatar">LW</div><div><div class="t-name">Lim Wei Ling</div><div class="t-role">Zuellig Pharma, Singapore</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">I only wish I had attended your program 10 years back.</p><div class="t-author"><div class="t-avatar">FA</div><div><div class="t-name">Francis Alphonso</div><div class="t-role">Head HRD, ING Barings</div></div></div></div>
+                </div>
+                <div class="t-slide">
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">100% return on my investment is an understatement.</p><div class="t-author"><div class="t-avatar">LB</div><div><div class="t-name">Linda Baker</div><div class="t-role">CPA, NJ, USA</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">Shiv has touched my mind and opened my heart to give back to society.</p><div class="t-author"><div class="t-avatar">DT</div><div><div class="t-name">Dr. Timothy Low</div><div class="t-role">CEO, Gleneagles Hospital, Singapore</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">Very self-enriching program.</p><div class="t-author"><div class="t-avatar">GS</div><div><div class="t-name">George Seah</div><div class="t-role">Singapore Armed Forces</div></div></div></div>
+                </div>
+                <div class="t-slide">
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">The best investment ever made… 3 days of knowledge will take me for another 30 years.</p><div class="t-author"><div class="t-avatar">SK</div><div><div class="t-name">Sanjeev Kumar</div><div class="t-role">Consulting Director, Hewlett Packard</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">The last 3 days were worth a lifetime of knowledge.</p><div class="t-author"><div class="t-avatar">CL</div><div><div class="t-name">Catherine Lim</div><div class="t-role">Director, Lucent Technologies</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">Having been exposed to training programs all over the world, yours was one of the best.</p><div class="t-author"><div class="t-avatar">MS</div><div><div class="t-name">Michael Stier</div><div class="t-role">Director, Lufthansa German Airlines</div></div></div></div>
+                </div>
+                <div class="t-slide">
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">These 3 days are the best investment I have made in my life.</p><div class="t-author"><div class="t-avatar">JK</div><div><div class="t-name">Jagdish Kini</div><div class="t-role">MD, Wilkinson Sword India</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">The program was brilliant.</p><div class="t-author"><div class="t-avatar">RF</div><div><div class="t-name">Rohan Fernandez</div><div class="t-role">VP, Credit Suisse, Singapore</div></div></div></div>
+                    <div class="t-card"><div class="t-quote-mark">"</div><div class="t-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div><p class="t-body">Invaluable to me in my work. Key aspects of great public speaking to practice.</p><div class="t-author"><div class="t-avatar">N</div><div><div class="t-name">Nisha</div><div class="t-role">MD, J. P. Morgan</div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-controls"><button class="carousel-btn" id="prevBtn">←</button><div class="carousel-dots" id="carouselDots"></div><button class="carousel-btn" id="nextBtn">→</button></div>
+    </div>
+
+    <!-- Featured Testimonial -->
+    <div class="reveal rd2">
+        <div class="ft-carousel">
+            <div class="ft-track" id="ftTrack">
+                <div class="ft-slide">
+                    <div class="featured-t">
+                        <div class="ft-label">Life-Changing Story</div>
+                        <p class="ft-body">In 2003, I was married and have a 3 years old girl, I was going through very bad marriage... Then one day I decided to finish my life. While waiting for the bus my sight went on a book stall, where I saw your book YOU CAN WIN. Something magical happened and I paid money for the book and came back home. After that I managed to get divorce all by myself, came to Australia with my daughter in 2004 on student visa. Started my business just in one year. Now I am a successful business woman and I gave all your teachings to my daughter, she is graduated in law and working with a big company.</p>
+                        <div class="ft-author"><div class="ft-avatar">NK</div><div><div class="ft-name">Nikki Kaur</div><div class="ft-role">Entrepreneur, Melbourne, Australia</div></div></div>
+                    </div>
+                </div>
+                <div class="ft-slide">
+                    <div class="featured-t">
+                        <div class="ft-label">Transformation Story</div>
+                        <p class="ft-body">At the age of 41, I was released from a very long prison sentence. I must confess that during the "dark" period of my life in Prison I came across your books which began to shape my thought process, my attitude & my next course of life. Today I run a company that has almost 200 staff of which 80% consist of prisoners, handicap, single mums, senior citizens yet we serve some of the Blue Chip companies in Singapore with high standards of quality.</p>
+                        <div class="ft-author"><div class="ft-avatar">AD</div><div><div class="ft-name">Anil David</div><div class="ft-role">Founder/Director, Agape Connecting People Pte Ltd</div></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="carousel-controls" style="margin-top:1.5rem"><button class="carousel-btn" id="ftPrevBtn">←</button><div class="carousel-dots" id="ftDots"></div><button class="carousel-btn" id="ftNextBtn">→</button></div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+    <div class="cta-glow"></div>
+    <div class="cta-inner">
+        <div class="cta-eyebrow reveal"><span class="cta-eyebrow-line"></span>Let's Connect<span class="cta-eyebrow-line"></span></div>
+        <h2 class="cta-heading reveal rd1">Ready to <em>Transform</em> Your Life?</h2>
+        <p class="cta-desc reveal rd2">Book Shiv Khera for a speaking engagement, corporate training, or bring his transformative programs to your organization.</p>
+        <div class="cta-btns reveal rd3">
+            <a href="mailto:info@shivkhera.com" class="btn-cta-primary">Contact Now →</a>
+            <a href="#" class="btn-cta-outline">Book a Session</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-brand">
+            <img src="https://shivkhera.com/wp-content/uploads/2024/03/Shiv-Khera-Logo-White-2.png" alt="Shiv Khera" class="footer-logo-img">
+            <p class="footer-about">Bestselling author, motivational speaker, and educator. Transforming lives through wisdom and positive thinking for over 40 years.</p>
+            <div class="footer-social">
+                <a href="https://www.facebook.com/ShivKhera" target="_blank">f</a>
+                <a href="https://twitter.com/ShivKhera" target="_blank">𝕏</a>
+                <a href="https://www.youtube.com/shivkhera" target="_blank">▶</a>
+                <a href="https://www.linkedin.com/in/shivkhera/" target="_blank">in</a>
+            </div>
+        </div>
+        <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="#about">About</a></li><li><a href="#programs">Programs</a></li><li><a href="#books">Books</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#contact">Contact</a></li></ul></div>
+        <div class="footer-col"><h4>Programs</h4><ul><li><a href="#programs">Hi-Impact Leadership</a></li><li><a href="#programs">Public Speaking</a></li><li><a href="#programs">Gain & Retain Customers</a></li><li><a href="#programs">College Leadership</a></li><li><a href="#programs">Positive Parenting</a></li></ul></div>
+        <div class="footer-col"><h4>Connect</h4><ul><li><a href="https://www.shivkhera.com" target="_blank">shivkhera.com</a></li><li><a href="mailto:info@shivkhera.com">info@shivkhera.com</a></li><li><a href="#">Media Inquiries</a></li><li><a href="#">Speaking Requests</a></li><li><a href="#">Shop</a></li></ul></div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-bottom">
+        <p>© 2025 Shiv Khera. All rights reserved. "Winners don't do different things, they do things differently®"</p>
+        <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Sitemap</a></div>
+    </div>
+</footer>
+
+<button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Loading
+const quotes=['"Winners don\'t do different things, they do things differently®"','"Your positive action combined with positive thinking results in success"','"Success is not an accident. It is the result of your attitude"','"Confidence comes from being prepared"','"Winners see the gain; losers see the pain"'];
+const ls=document.getElementById('loadingScreen'),lb=document.getElementById('loadingBar'),lq=document.getElementById('loadingQuote');
+document.body.style.overflow='hidden';
+setTimeout(()=>{lb.style.width='100%'},100);
+let qi=0;const qInt=setInterval(()=>{qi=(qi+1)%quotes.length;lq.style.opacity='0';setTimeout(()=>{lq.textContent=quotes[qi];lq.style.opacity='1'},300)},2000);
+setTimeout(()=>{clearInterval(qInt);ls.classList.add('done');document.body.style.overflow='auto'},5000);
+
+// Custom Cursor
+const cr=document.getElementById('cursorRing'),cd=document.getElementById('cursorDot');
+let mx=0,my=0,fx=0,fy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cd.style.left=mx-2.5+'px';cd.style.top=my-2.5+'px'});
+function ac(){fx+=(mx-fx)*.08;fy+=(my-fy)*.08;cr.style.left=fx-16+'px';cr.style.top=fy-16+'px';requestAnimationFrame(ac)}ac();
+document.querySelectorAll('a,button,.program-card,.book-card,.t-card,.btn-underline,.btn-card,.dd-link,.nav-link').forEach(el=>{el.addEventListener('mouseenter',()=>{cr.style.transform='scale(2)';cr.style.opacity='.3'});el.addEventListener('mouseleave',()=>{cr.style.transform='scale(1)';cr.style.opacity='.5'})});
+if('ontouchstart'in window){cr.style.display='none';cd.style.display='none'}
+
+// Scroll Progress
+window.addEventListener('scroll',()=>{const h=document.documentElement;document.getElementById('scrollProgress').style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight))*100+'%'});
+
+// Header scroll
+const header=document.getElementById('siteHeader');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>50)});
+
+// Dropdowns
+(function(){
+    const items=document.querySelectorAll('.nav-item[data-dropdown]');
+    let timer=null;
+    items.forEach(item=>{
+        const btn=item.querySelector('.nav-link');
+        const dd=item.querySelector('.nav-dropdown,.nav-mega');
+        btn.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(item.classList.contains('dd-open')){close(item)}else{closeAll();open(item)}});
+        item.addEventListener('mouseenter',()=>clearTimeout(timer));
+        item.addEventListener('mouseleave',()=>{timer=setTimeout(()=>close(item),250)});
+        if(dd){dd.addEventListener('mouseenter',()=>clearTimeout(timer));dd.addEventListener('mouseleave',()=>{timer=setTimeout(()=>close(item),250)})}
+    });
+    function open(i){i.classList.add('dd-open')}
+    function close(i){i.classList.remove('dd-open')}
+    function closeAll(){items.forEach(i=>i.classList.remove('dd-open'))}
+    document.addEventListener('click',e=>{if(!e.target.closest('.nav-item[data-dropdown]'))closeAll()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeAll()});
+    document.querySelectorAll('.dd-link,.mega-cta-link').forEach(l=>{l.addEventListener('click',()=>setTimeout(closeAll,50))});
+})();
+
+// Hamburger
+const ham=document.getElementById('hamburger'),mm=document.getElementById('mobileMenu');
+ham.addEventListener('click',()=>{ham.classList.toggle('active');mm.classList.toggle('active');document.body.style.overflow=mm.classList.contains('active')?'hidden':'auto'});
+document.querySelectorAll('.mob-sub-link,.mob-item:not(.has-sub) .mob-link,.mob-bottom a').forEach(l=>{l.addEventListener('click',()=>{ham.classList.remove('active');mm.classList.remove('active');document.body.style.overflow='auto'})});
+
+// Reveal on scroll
+const revs=document.querySelectorAll('.reveal');
+function chkReveal(){revs.forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight-60)el.classList.add('active')})}
+window.addEventListener('scroll',chkReveal);window.addEventListener('load',chkReveal);
+
+// Back to top
+const btt=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{btt.classList.toggle('visible',window.scrollY>500)});
+
+// Counter animation
+function animCounters(){document.querySelectorAll('[data-count]').forEach(c=>{const t=parseInt(c.getAttribute('data-count'));if(c.getBoundingClientRect().top<window.innerHeight&&!c.classList.contains('counted')){c.classList.add('counted');let cur=0;const inc=t/60;const tmr=setInterval(()=>{cur+=inc;if(cur>=t){cur=t;clearInterval(tmr)}c.textContent=Math.floor(cur)+'+'},25)}})}
+window.addEventListener('scroll',animCounters);window.addEventListener('load',()=>setTimeout(animCounters,5500));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',function(e){e.preventDefault();const t=document.querySelector(this.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'})})});
+
+// YouTube
+(function(){var t=document.createElement('script');t.src="https://www.youtube.com/iframe_api";document.getElementsByTagName('script')[0].parentNode.insertBefore(t,document.getElementsByTagName('script')[0]);window.onYouTubeIframeAPIReady=function(){new YT.Player('ytPlayer',{events:{'onStateChange':function(e){if(e.data===YT.PlayerState.ENDED){e.target.seekTo(108);e.target.playVideo()}},'onReady':function(e){e.target.mute();e.target.playVideo()}}})}})();
+
+// Carousel
+class Carousel{constructor(t,p,n,d,a=true,i=5000){this.track=document.getElementById(t);if(!this.track)return;this.slides=this.track.children;this.total=this.slides.length;this.cur=0;this.auto=a;this.int=i;this.timer=null;document.getElementById(p).addEventListener('click',()=>{this.prev();this.reset()});document.getElementById(n).addEventListener('click',()=>{this.next();this.reset()});const dc=document.getElementById(d);for(let j=0;j<this.total;j++){const dot=document.createElement('div');dot.classList.add('carousel-dot');if(!j)dot.classList.add('active');dot.addEventListener('click',()=>{this.goTo(j);this.reset()});dc.appendChild(dot)}this.dots=dc.querySelectorAll('.carousel-dot');let sx=0;this.track.addEventListener('touchstart',e=>{sx=e.touches[0].clientX});this.track.addEventListener('touchend',e=>{const diff=sx-e.changedTouches[0].clientX;if(Math.abs(diff)>50){diff>0?this.next():this.prev();this.reset()}});if(this.auto)this.start()}goTo(i){this.cur=i;this.track.style.transform=`translateX(-${i*100}%)`;this.dots.forEach((d,j)=>d.classList.toggle('active',j===i))}next(){this.goTo((this.cur+1)%this.total)}prev(){this.goTo((this.cur-1+this.total)%this.total)}start(){this.timer=setInterval(()=>this.next(),this.int)}reset(){clearInterval(this.timer);if(this.auto)this.start()}}
+setTimeout(()=>{new Carousel('tTrack','prevBtn','nextBtn','carouselDots',true,5000);new Carousel('ftTrack','ftPrevBtn','ftNextBtn','ftDots',true,8000)},100);
+</script>
+</body>
+</html>

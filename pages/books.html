@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books by Shiv Khera - Bestselling Success & Leadership Books</title>
+    <meta name="description" content="Explore the complete collection of bestselling books by Shiv Khera. Transform your life with proven strategies for success, leadership, and personal development.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <style>
+        .page-header {
+            background: var(--bg-gradient);
+            padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
+            text-align: center;
+            color: var(--text-light);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-title {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .book-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--spacing-xl);
+            align-items: center;
+            margin-bottom: var(--spacing-xl);
+            padding: var(--spacing-lg);
+            background: var(--bg-off-white);
+            border-radius: var(--radius-xl);
+        }
+        
+        .book-showcase:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .book-showcase:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        .book-image-large {
+            width: 100%;
+            max-width: 400px;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-xl);
+            transition: var(--transition-medium);
+        }
+        
+        .book-image-large:hover {
+            transform: scale(1.02);
+        }
+        
+        .book-details h3 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .book-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
+            flex-wrap: wrap;
+        }
+        
+        .book-tag {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .book-description {
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .book-features {
+            list-style: none;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .book-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--text-gray);
+        }
+        
+        .book-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+        
+        .books-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .book-card {
+            background: var(--bg-light);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: var(--transition-medium);
+        }
+        
+        .book-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .book-card-image {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+        }
+        
+        .book-card-content {
+            padding: var(--spacing-md);
+        }
+        
+        .book-card-title {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .book-card-price {
+            font-size: 1.25rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .testimonials-section {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: var(--spacing-xl) 0;
+        }
+        
+        .testimonial-item {
+            background: rgba(255,255,255,0.05);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            font-size: 1.125rem;
+            margin-bottom: var(--spacing-md);
+            line-height: 1.8;
+        }
+        
+        .testimonial-author {
+            color: var(--accent-gold);
+            font-weight: 600;
+        }
+        
+        @media (max-width: 1024px) {
+            .book-showcase {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .book-showcase:nth-child(even) {
+                direction: ltr;
+            }
+            
+            .book-meta {
+                justify-content: center;
+            }
+            
+            .books-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .books-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .book-image-large {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">SHIV KHERA</div>
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">SHIV KHERA</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="books.html" class="nav-link active">Books</a></li>
+                <li><a href="programs.html" class="nav-link">Programs</a></li>
+                <li><a href="speaking.html" class="nav-link">Speaking</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1 class="page-title">Books That Transform Lives</h1>
+        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">
+            Discover timeless wisdom and practical strategies from international bestsellers
+        </p>
+    </section>
+
+    <!-- Featured Books Showcase -->
+    <section class="section">
+        <div class="container">
+            <!-- Book 1 -->
+            <div class="book-showcase">
+                <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop" alt="You Can Win" class="book-image-large">
+                <div class="book-details">
+                    <h3>You Can Win</h3>
+                    <div class="book-meta">
+                        <span class="book-tag">Bestseller</span>
+                        <span class="book-tag">5 Million+ Copies</span>
+                        <span class="book-tag">Translated into 20+ Languages</span>
+                    </div>
+                    <p class="book-description">
+                        "You Can Win" is a step-by-step tool for the achievers. This book teaches you how to develop a winning attitude, set meaningful goals, and overcome obstacles that stand in your way. Through real-life examples and practical exercises, Shiv Khera provides a roadmap to success that anyone can follow.
+                    </p>
+                    <ul class="book-features">
+                        <li>Build a positive mental attitude</li>
+                        <li>Set and achieve meaningful goals</li>
+                        <li>Develop self-discipline and motivation</li>
+                        <li>Overcome fear and self-doubt</li>
+                        <li>Create lasting success habits</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-large">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Book 2 -->
+            <div class="book-showcase">
+                <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=600&fit=crop" alt="Winning Habits" class="book-image-large">
+                <div class="book-details">
+                    <h3>Winning Habits</h3>
+                    <div class="book-meta">
+                        <span class="book-tag">International Bestseller</span>
+                        <span class="book-tag">Corporate Favorite</span>
+                    </div>
+                    <p class="book-description">
+                        There are no shortcuts to success. "Winning Habits" reveals the proven habits and practices that separate winners from losers. Learn how to build systems that support your goals and create a lifestyle of excellence that becomes second nature.
+                    </p>
+                    <ul class="book-features">
+                        <li>Identify and break bad habits</li>
+                        <li>Build powerful success routines</li>
+                        <li>Master time management</li>
+                        <li>Develop emotional intelligence</li>
+                        <li>Create accountability systems</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-large">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Book 3 -->
+            <div class="book-showcase">
+                <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop" alt="Lead Without Tears" class="book-image-large">
+                <div class="book-details">
+                    <h3>Lead Without Tears</h3>
+                    <div class="book-meta">
+                        <span class="book-tag">Leadership Classic</span>
+                        <span class="book-tag">Fortune 500 Recommended</span>
+                    </div>
+                    <p class="book-description">
+                        Great leaders are made, not born. "Lead Without Tears" provides a comprehensive guide to effective leadership in the modern world. Learn how to inspire teams, drive change, and create a culture of excellence without compromising your values or well-being.
+                    </p>
+                    <ul class="book-features">
+                        <li>Master different leadership styles</li>
+                        <li>Build high-performance teams</li>
+                        <li>Navigate organizational change</li>
+                        <li>Communicate with impact</li>
+                        <li>Lead with integrity and compassion</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-large">Order Now</a>
+                </div>
+            </div>
+
+            <!-- Book 4 -->
+            <div class="book-showcase">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=600&fit=crop" alt="The Success Journey" class="book-image-large">
+                <div class="book-details">
+                    <h3>The Success Journey</h3>
+                    <div class="book-meta">
+                        <span class="book-tag">New Release</span>
+                        <span class="book-tag">Practical Guide</span>
+                    </div>
+                    <p class="book-description">
+                        Success is a journey, not a destination. This book takes you through every stage of the success journey, from discovering your purpose to achieving your dreams. Packed with actionable strategies and inspiring stories, it's your companion for the road ahead.
+                    </p>
+                    <ul class="book-features">
+                        <li>Discover your life purpose</li>
+                        <li>Create a personal vision</li>
+                        <li>Overcome setbacks and failures</li>
+                        <li>Build resilience and grit</li>
+                        <li>Celebrate milestones along the way</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary btn-large">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Complete Collection -->
+    <section class="section" style="background: var(--bg-off-white);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Complete Collection</h2>
+                <p class="section-subtitle">All books available in multiple formats</p>
+            </div>
+            
+            <div class="books-grid">
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400&h=600&fit=crop" alt="You Can Win" class="book-card-image">
+                    <div class="book-card-content">
+                        <h3 class="book-card-title">You Can Win</h3>
+                        <p class="book-card-price">$19.99</p>
+                        <p class="card-text">The ultimate guide to developing a winner's mindset.</p>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">Purchase</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=600&fit=crop" alt="Winning Habits" class="book-card-image">
+                    <div class="book-card-content">
+                        <h3 class="book-card-title">Winning Habits</h3>
+                        <p class="book-card-price">$17.99</p>
+                        <p class="card-text">Build habits that lead to lasting success.</p>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">Purchase</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop" alt="Lead Without Tears" class="book-card-image">
+                    <div class="book-card-content">
+                        <h3 class="book-card-title">Lead Without Tears</h3>
+                        <p class="book-card-price">$21.99</p>
+                        <p class="card-text">Master the art of effective leadership.</p>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">Purchase</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=400&h=600&fit=crop" alt="The Success Journey" class="book-card-image">
+                    <div class="book-card-content">
+                        <h3 class="book-card-title">The Success Journey</h3>
+                        <p class="book-card-price">$18.99</p>
+                        <p class="card-text">Your roadmap to achieving your dreams.</p>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">Purchase</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=400&h=600&fit=crop" alt="Attitude is Everything" class="book-card-image">
+                    <div class="book-card-content">
+                        <h3 class="book-card-title">Attitude is Everything</h3>
+                        <p class="book-card-price">$16.99</p>
+                        <p class="card-text">Transform your life by changing your attitude.</p>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">Purchase</a>
+                    </div>
+                </div>
+                
+                <div class="book-card">
+                    <img src="https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=600&fit=crop" alt="Thought Revolution" class="book-card-image">
+                    <div class="book-card-content">
+                        <h3 class="book-card-title">Thought Revolution</h3>
+                        <p class="book-card-price">$15.99</p>
+                        <p class="card-text">Revolutionize your thinking, transform your life.</p>
+                        <a href="#" class="btn btn-secondary" style="width: 100%;">Purchase</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reader Testimonials -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" style="color: var(--text-light);">What Readers Say</h2>
+                <p class="section-subtitle" style="color: var(--text-gray);">Real transformations from real readers</p>
+            </div>
+            
+            <div class="grid-3">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"You Can Win changed my perspective on life. I was stuck in a dead-end job, but after applying the principles from this book, I started my own business and never looked back."</p>
+                    <p class="testimonial-author">— Amit Patel, Entrepreneur</p>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"As a CEO, I've read countless leadership books. 'Lead Without Tears' stands out for its practical wisdom and compassionate approach. It transformed how I lead my organization."</p>
+                    <p class="testimonial-author">— Sarah Johnson, CEO</p>
+                </div>
+                
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Winning Habits helped me break years of procrastination. The systems Shiv Khera teaches are simple yet incredibly powerful. I'm now the most productive I've ever been."</p>
+                    <p class="testimonial-author">— David Chen, Software Engineer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bulk Orders CTA -->
+    <section class="section">
+        <div class="container-narrow text-center">
+            <h2 class="section-title">Bulk Orders & Corporate Packages</h2>
+            <p class="section-subtitle">
+                Looking to order books for your team or organization? Special discounts available for bulk orders.
+            </p>
+            <div style="margin-top: var(--spacing-lg);">
+                <a href="contact.html" class="btn btn-primary btn-large">Request Bulk Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">SHIV KHERA</div>
+                    <p>Empowering millions worldwide with timeless wisdom and practical strategies for success since 1993.</p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Shiv</a></li>
+                        <li><a href="books.html">Books</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="speaking.html">Speaking</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="resources.html">Articles</a></li>
+                        <li><a href="resources.html">Videos</a></li>
+                        <li><a href="resources.html">Podcasts</a></li>
+                        <li><a href="resources.html">Newsletter</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Shiv Khera. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">FB</a>
+                    <a href="#" class="social-link">TW</a>
+                    <a href="#" class="social-link">LI</a>
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">YT</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

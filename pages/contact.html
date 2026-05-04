@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Shiv Khera - Speaking Engagements & Inquiries</title>
+    <meta name="description" content="Get in touch with Shiv Khera for speaking engagements, corporate training, media inquiries, or general questions.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="../css/styles.css">
+    
+    <style>
+        .page-header {
+            background: var(--bg-gradient);
+            padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
+            text-align: center;
+            color: var(--text-light);
+        }
+        
+        .page-title {
+            color: var(--text-light);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .contact-section {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: var(--spacing-xl);
+            margin-top: var(--spacing-xl);
+        }
+        
+        .contact-info {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-xl);
+        }
+        
+        .contact-info h3 {
+            color: var(--accent-gold);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--spacing-sm);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .info-icon {
+            color: var(--accent-gold);
+            font-size: 1.5rem;
+            min-width: 30px;
+        }
+        
+        .info-content h4 {
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .info-content p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        .social-connect {
+            margin-top: var(--spacing-lg);
+            padding-top: var(--spacing-md);
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .social-connect h4 {
+            color: var(--accent-gold);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .social-links-contact {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-link-contact {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            transition: var(--transition-medium);
+            font-weight: bold;
+        }
+        
+        .social-link-contact:hover {
+            background: var(--accent-gold);
+            color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+        
+        .contact-form-container {
+            background: var(--bg-light);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-md);
+        }
+        
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .form-input,
+        .form-select,
+        .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: var(--radius-md);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition-fast);
+        }
+        
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 0 3px rgba(201, 169, 98, 0.1);
+        }
+        
+        .form-textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            width: 100%;
+            padding: 1.25rem;
+            background: linear-gradient(135deg, var(--accent-gold), var(--accent-gold-dark));
+            color: var(--primary-dark);
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: var(--transition-medium);
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-gold);
+        }
+        
+        .offices-section {
+            margin-top: var(--spacing-xl);
+        }
+        
+        .offices-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--spacing-lg);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .office-card {
+            background: var(--bg-off-white);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            text-align: center;
+            transition: var(--transition-medium);
+        }
+        
+        .office-card:hover {
+            background: var(--primary-dark);
+            transform: translateY(-5px);
+        }
+        
+        .office-card:hover h4,
+        .office-card:hover p {
+            color: var(--text-light);
+        }
+        
+        .office-icon {
+            font-size: 2.5rem;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .office-card h4 {
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .office-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+        
+        .faq-section {
+            background: var(--bg-off-white);
+            padding: var(--spacing-xl) 0;
+            margin-top: var(--spacing-xl);
+        }
+        
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--spacing-lg);
+            max-width: 1000px;
+            margin: var(--spacing-lg) auto 0;
+        }
+        
+        .faq-item {
+            background: var(--bg-light);
+            padding: var(--spacing-md);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .faq-question {
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin-bottom: var(--spacing-sm);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .faq-question::before {
+            content: 'Q';
+            color: var(--accent-gold);
+            font-weight: 700;
+        }
+        
+        .faq-answer {
+            color: var(--text-gray);
+            line-height: 1.7;
+        }
+        
+        @media (max-width: 1024px) {
+            .contact-section {
+                grid-template-columns: 1fr;
+            }
+            
+            .offices-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .offices-grid,
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loader">
+        <div class="loader-content">
+            <div class="loader-logo">SHIV KHERA</div>
+            <div class="loader-spinner"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">SHIV KHERA</a>
+            <ul class="nav-menu">
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="books.html" class="nav-link">Books</a></li>
+                <li><a href="programs.html" class="nav-link">Programs</a></li>
+                <li><a href="speaking.html" class="nav-link">Speaking</a></li>
+                <li><a href="resources.html" class="nav-link">Resources</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="mobile-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1 class="page-title">Get in Touch</h1>
+        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">
+            Ready to transform your life or organization? Let's start the conversation.
+        </p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section">
+        <div class="container">
+            <div class="contact-section">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div class="info-content">
+                            <h4>Headquarters</h4>
+                            <p>New Delhi, India</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-icon">📧</span>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>info@shivkhera.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+91 11 1234 5678</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <span class="info-icon">🕐</span>
+                        <div class="info-content">
+                            <h4>Business Hours</h4>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM IST</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-connect">
+                        <h4>Connect on Social Media</h4>
+                        <div class="social-links-contact">
+                            <a href="#" class="social-link-contact">FB</a>
+                            <a href="#" class="social-link-contact">TW</a>
+                            <a href="#" class="social-link-contact">LI</a>
+                            <a href="#" class="social-link-contact">IG</a>
+                            <a href="#" class="social-link-contact">YT</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <h2 style="margin-bottom: var(--spacing-md);">Send Us a Message</h2>
+                    <form id="contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">First Name *</label>
+                                <input type="text" class="form-input" name="firstName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Last Name *</label>
+                                <input type="text" class="form-input" name="lastName" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email Address *</label>
+                                <input type="email" class="form-input" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-input" name="phone">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Inquiry Type *</label>
+                            <select class="form-select" name="inquiryType" required>
+                                <option value="">Select an option</option>
+                                <option value="speaking">Speaking Engagement</option>
+                                <option value="corporate">Corporate Training</option>
+                                <option value="programs">Program Enrollment</option>
+                                <option value="media">Media Inquiry</option>
+                                <option value="books">Book Orders</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Organization/Company</label>
+                            <input type="text" class="form-input" name="organization">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Event Date (if applicable)</label>
+                            <input type="date" class="form-input" name="eventDate">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Message *</label>
+                            <textarea class="form-textarea" name="message" placeholder="Tell us about your requirements..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Offices -->
+    <section class="section offices-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Global Presence</h2>
+                <p class="section-subtitle">Reach out to our offices worldwide</p>
+            </div>
+            
+            <div class="offices-grid">
+                <div class="office-card">
+                    <div class="office-icon">🇮🇳</div>
+                    <h4>India</h4>
+                    <p>New Delhi<br>Headquarters</p>
+                </div>
+                
+                <div class="office-card">
+                    <div class="office-icon">🇺🇸</div>
+                    <h4>USA</h4>
+                    <p>New York<br>North America</p>
+                </div>
+                
+                <div class="office-card">
+                    <div class="office-icon">🇬🇧</div>
+                    <h4>UK</h4>
+                    <p>London<br>Europe</p>
+                </div>
+                
+                <div class="office-card">
+                    <div class="office-icon">🇸🇬</div>
+                    <h4>Singapore</h4>
+                    <p>Singapore<br>Asia Pacific</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Quick answers to common questions</p>
+            </div>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <p class="faq-question">How do I book Shiv Khera for a speaking engagement?</p>
+                    <p class="faq-answer">Fill out the contact form above and select "Speaking Engagement" as your inquiry type. Our team will respond within 48 hours with availability and details.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <p class="faq-question">What are the fees for corporate training programs?</p>
+                    <p class="faq-answer">Corporate training fees vary based on program duration, customization level, and location. Contact us for a customized quote.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <p class="faq-question">Are there group discounts for programs?</p>
+                    <p class="faq-answer">Yes, we offer special rates for groups of 5 or more. Contact our team for group pricing details.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <p class="faq-question">Can programs be customized for our organization?</p>
+                    <p class="faq-answer">Absolutely! We specialize in creating tailored programs that address your organization's specific challenges and goals.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <p class="faq-question">What is the response time for inquiries?</p>
+                    <p class="faq-answer">We typically respond to all inquiries within 24-48 business hours. Urgent requests are prioritized.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <p class="faq-question">Do you offer virtual training options?</p>
+                    <p class="faq-answer">Yes, all our programs are available in both in-person and virtual formats to accommodate global audiences.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">SHIV KHERA</div>
+                    <p>Empowering millions worldwide with timeless wisdom and practical strategies for success since 1993.</p>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Shiv</a></li>
+                        <li><a href="books.html">Books</a></li>
+                        <li><a href="programs.html">Programs</a></li>
+                        <li><a href="speaking.html">Speaking</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li><a href="resources.html">Articles</a></li>
+                        <li><a href="resources.html">Videos</a></li>
+                        <li><a href="resources.html">Podcasts</a></li>
+                        <li><a href="resources.html">Newsletter</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="footer-title">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Shiv Khera. All rights reserved.</p>
+                <div class="social-links">
+                    <a href="#" class="social-link">FB</a>
+                    <a href="#" class="social-link">TW</a>
+                    <a href="#" class="social-link">LI</a>
+                    <a href="#" class="social-link">IG</a>
+                    <a href="#" class="social-link">YT</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+</body>
+</html>

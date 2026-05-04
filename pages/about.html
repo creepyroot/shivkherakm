@@ -1,511 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Shiv Khera - Biography & Journey</title>
-    <meta name="description" content="Learn about Shiv Khera's inspiring journey from humble beginnings to becoming one of the world's most influential motivational speakers and authors.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="../css/styles.css">
-    
-    <!-- Three.js CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
-    <style>
-        .page-header {
-            background: var(--bg-gradient);
-            padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .page-header canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .page-header-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .page-title {
-            color: var(--text-light);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-            padding: var(--spacing-lg) 0;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 3px;
-            height: 100%;
-            background: linear-gradient(180deg, var(--accent-gold), var(--primary-blue));
-        }
-        
-        .timeline-item {
-            display: flex;
-            justify-content: flex-end;
-            padding: var(--spacing-md) 0;
-            position: relative;
-            width: 50%;
-        }
-        
-        .timeline-item:nth-child(odd) {
-            align-self: flex-start;
-            justify-content: flex-start;
-            padding-right: var(--spacing-xl);
-        }
-        
-        .timeline-item:nth-child(even) {
-            align-self: flex-end;
-            justify-content: flex-end;
-            padding-left: var(--spacing-xl);
-            margin-left: 50%;
-        }
-        
-        .timeline-content {
-            background: var(--bg-light);
-            padding: var(--spacing-md);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            max-width: 400px;
-            position: relative;
-            transition: var(--transition-medium);
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .timeline-year {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--accent-gold);
-            font-weight: 700;
-            margin-bottom: var(--spacing-xs);
-        }
-        
-        .timeline-dot {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--accent-gold);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-dot {
-            right: -10px;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-dot {
-            left: -10px;
-        }
-        
-        .values-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-lg);
-        }
-        
-        .value-card {
-            text-align: center;
-            padding: var(--spacing-lg);
-            background: var(--bg-off-white);
-            border-radius: var(--radius-lg);
-            transition: var(--transition-medium);
-        }
-        
-        .value-card:hover {
-            background: var(--primary-dark);
-            transform: translateY(-5px);
-        }
-        
-        .value-card:hover .value-title,
-        .value-card:hover .value-text {
-            color: var(--text-light);
-        }
-        
-        .value-icon {
-            font-size: 3rem;
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .value-title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .value-text {
-            color: var(--text-gray);
-        }
-        
-        .quote-section {
-            background: var(--bg-off-white);
-            padding: var(--spacing-xl) 0;
-            text-align: center;
-        }
-        
-        .quote-text {
-            font-family: var(--font-heading);
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-style: italic;
-            color: var(--primary-dark);
-            max-width: 900px;
-            margin: 0 auto var(--spacing-md);
-            line-height: 1.4;
-        }
-        
-        .quote-author {
-            color: var(--accent-gold);
-            font-weight: 600;
-            font-size: 1.125rem;
-        }
-        
-        @media (max-width: 768px) {
-            .timeline::before {
-                left: 20px;
-            }
-            
-            .timeline-item,
-            .timeline-item:nth-child(odd),
-            .timeline-item:nth-child(even) {
-                width: 100%;
-                margin-left: 0;
-                padding-left: 60px;
-                padding-right: 0;
-                justify-content: flex-start;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-dot,
-            .timeline-item:nth-child(even) .timeline-dot {
-                left: 10px;
-                right: auto;
-            }
-            
-            .values-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Shiv Khera | Biography & Journey</title>
+  <meta name="description" content="Learn about Shiv Khera's inspiring journey from humble beginnings to becoming one of the world's most influential motivational speakers and authors.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loader">
-        <div class="loader-content">
-            <div class="loader-logo">SHIV KHERA</div>
-            <div class="loader-spinner"></div>
-        </div>
+  <div class="loading-screen">
+    <div class="loader-content">
+      <div class="loader-logo">SHIV KHERA</div>
+      <div class="loader-bar"></div>
     </div>
+  </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo">SHIV KHERA</a>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="books.html" class="nav-link">Books</a></li>
-                <li><a href="programs.html" class="nav-link">Programs</a></li>
-                <li><a href="speaking.html" class="nav-link">Speaking</a></li>
-                <li><a href="resources.html" class="nav-link">Resources</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">SHIV KHERA</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <h1>The Story Behind The Success</h1>
+    <p>From refugee camps to international acclaim – a journey of resilience, determination, and unwavering commitment to excellence.</p>
+  </section>
+
+  <section class="about-detail">
+    <div class="grid-2">
+      <div class="about-image fade-in">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop" alt="Shiv Khera Portrait">
+      </div>
+      <div class="about-content fade-in">
+        <span class="section-label">Biography</span>
+        <h2 class="section-title">A Life of Purpose</h2>
+        <p class="about-text">
+          Born in 1964 in India, Shiv Khera's early life was marked by challenges that would define his character and mission. His family migrated to India during the partition, and he grew up understanding the value of hard work, perseverance, and integrity from a young age.
+        </p>
+        <p class="about-text">
+          After completing his education, Shiv began his career in the corporate world, quickly rising through the ranks. However, he felt a calling to make a larger impact. In 1993, he made the pivotal decision to dedicate his life to empowering others through his writings and speeches.
+        </p>
+        <p class="about-text">
+          Today, Shiv Khera has addressed over 5 million people across 60+ countries, worked with Fortune 500 companies, and his books have sold more than 20 million copies in 20+ languages. He remains committed to his mission of creating a better world through individual transformation.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="timeline-section">
+    <div class="section-header">
+      <span class="section-label">Journey</span>
+      <h2 class="section-title">Milestones & Achievements</h2>
+    </div>
+    
+    <div class="timeline fade-in">
+      <div class="timeline-item">
+        <span class="timeline-year">1964</span>
+        <div class="timeline-content">
+          <h4>Born in India</h4>
+          <p>Shiv Khera was born in New Delhi, India, into a family that valued education and hard work above all else.</p>
         </div>
-    </nav>
-
-    <!-- Page Header -->
-    <section class="page-header">
-        <canvas id="hero-canvas"></canvas>
-        <div class="container page-header-content">
-            <h1 class="page-title">About Shiv Khera</h1>
-            <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">
-                A journey of perseverance, excellence, and unwavering commitment to empowering others
-            </p>
+      </div>
+      
+      <div class="timeline-item">
+        <span class="timeline-year">1985</span>
+        <div class="timeline-content">
+          <h4>Corporate Career Begins</h4>
+          <p>Started his professional journey in the corporate sector, learning valuable lessons about business, leadership, and human behavior.</p>
         </div>
-    </section>
-
-    <!-- Biography Section -->
-    <section class="section">
-        <div class="container">
-            <div class="grid-2" style="align-items: center; margin-bottom: var(--spacing-xl);">
-                <div>
-                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=700&fit=crop" alt="Shiv Khera Portrait" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
-                </div>
-                <div>
-                    <h2 style="margin-bottom: var(--spacing-md);">From Humble Beginnings to Global Impact</h2>
-                    <p>
-                        Born in 1965 in India, Shiv Khera's early life was marked by challenges that would later become the foundation of his philosophy. Orphaned at a young age, he learned the value of self-reliance and determination.
-                    </p>
-                    <p>
-                        After completing his education, Shiv Khera started his career in the insurance industry, where he quickly rose to become one of the top performers. However, his true calling was to inspire and empower others to achieve their full potential.
-                    </p>
-                    <p>
-                        In 1993, he founded his training and consulting company, and since then, he has touched millions of lives through his books, seminars, and corporate training programs across 40+ countries.
-                    </p>
-                </div>
-            </div>
-            
-            <div class="section-header">
-                <h2 class="section-title">The Journey</h2>
-                <p class="section-subtitle">Key milestones that shaped a legacy</p>
-            </div>
-            
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">1965</div>
-                        <h3>Born in India</h3>
-                        <p>Shiv Khera was born in New Delhi, India, where he would begin his journey of overcoming adversity.</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">1987</div>
-                        <h3>Career Begins</h3>
-                        <p>Started his professional career in the insurance industry, quickly becoming a top performer.</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">1993</div>
-                        <h3>Company Founded</h3>
-                        <p>Established his own training and consulting firm, marking the beginning of his mission to empower others.</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">1997</div>
-                        <h3>First Bestseller</h3>
-                        <p>Published "You Can Win," which became an international bestseller and launched his author career.</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2005</div>
-                        <h3>Global Expansion</h3>
-                        <p>Expanded operations to 40+ countries, addressing Fortune 500 companies worldwide.</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-year">2024</div>
-                        <h3>Continuing Legacy</h3>
-                        <p>Over 5 million books sold and millions of lives transformed through various programs.</p>
-                    </div>
-                    <div class="timeline-dot"></div>
-                </div>
-            </div>
+      </div>
+      
+      <div class="timeline-item">
+        <span class="timeline-year">1993</span>
+        <div class="timeline-content">
+          <h4>First Book Published</h4>
+          <p>"You Can Win" was published, marking the beginning of his journey as an international bestselling author.</p>
         </div>
-    </section>
-
-    <!-- Core Values -->
-    <section class="section" style="background: var(--bg-off-white);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Core Values</h2>
-                <p class="section-subtitle">The principles that guide every action and decision</p>
-            </div>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-icon">🎯</div>
-                    <h3 class="value-title">Excellence</h3>
-                    <p class="value-text">Striving for the highest standards in everything we do, never settling for mediocrity.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">💡</div>
-                    <h3 class="value-title">Innovation</h3>
-                    <p class="value-text">Continuously evolving methods and approaches to deliver maximum impact.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🤝</div>
-                    <h3 class="value-title">Integrity</h3>
-                    <p class="value-text">Building trust through honesty, transparency, and ethical practices.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">🌟</div>
-                    <h3 class="value-title">Empowerment</h3>
-                    <p class="value-text">Enabling individuals to discover and unleash their true potential.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">📚</div>
-                    <h3 class="value-title">Continuous Learning</h3>
-                    <p class="value-text">Embracing lifelong learning and sharing knowledge generously.</p>
-                </div>
-                
-                <div class="value-card">
-                    <div class="value-icon">❤️</div>
-                    <h3 class="value-title">Compassion</h3>
-                    <p class="value-text">Leading with empathy and understanding the unique challenges of each individual.</p>
-                </div>
-            </div>
+      </div>
+      
+      <div class="timeline-item">
+        <span class="timeline-year">2000</span>
+        <div class="timeline-content">
+          <h4>Global Recognition</h4>
+          <p>"You Can Win" became an international bestseller, translated into multiple languages and sold worldwide.</p>
         </div>
-    </section>
-
-    <!-- Quote Section -->
-    <section class="quote-section">
-        <div class="container">
-            <p class="quote-text">
-                "Success is not final, failure is not fatal: It is the courage to continue that counts. Your attitude, not your aptitude, will determine your altitude."
-            </p>
-            <p class="quote-author">— Shiv Khera</p>
+      </div>
+      
+      <div class="timeline-item">
+        <span class="timeline-year">2010</span>
+        <div class="timeline-content">
+          <h4>5 Million Lives Touched</h4>
+          <p>Reached the milestone of having directly impacted 5 million lives through seminars, training programs, and books.</p>
         </div>
-    </section>
-
-    <!-- Achievements -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Achievements & Recognition</h2>
-                <p class="section-subtitle">Acknowledgments from around the world</p>
-            </div>
-            
-            <div class="grid-3">
-                <div class="card animate-on-scroll">
-                    <div class="card-content">
-                        <h3 class="card-title">5 Million+ Books Sold</h3>
-                        <p class="card-text">Bestselling author with books translated into multiple languages reaching readers globally.</p>
-                    </div>
-                </div>
-                
-                <div class="card animate-on-scroll">
-                    <div class="card-content">
-                        <h3 class="card-title">Fortune 500 Trainer</h3>
-                        <p class="card-text">Trusted by leading corporations worldwide for leadership and team development.</p>
-                    </div>
-                </div>
-                
-                <div class="card animate-on-scroll">
-                    <div class="card-content">
-                        <h3 class="card-title">40+ Countries</h3>
-                        <p class="card-text">International speaker who has addressed audiences across six continents.</p>
-                    </div>
-                </div>
-                
-                <div class="card animate-on-scroll">
-                    <div class="card-content">
-                        <h3 class="card-title">2000+ Corporate Clients</h3>
-                        <p class="card-text">Helped organizations build high-performance cultures and engaged teams.</p>
-                    </div>
-                </div>
-                
-                <div class="card animate-on-scroll">
-                    <div class="card-content">
-                        <h3 class="card-title">Media Presence</h3>
-                        <p class="card-text">Featured in major publications and media outlets worldwide.</p>
-                    </div>
-                </div>
-                
-                <div class="card animate-on-scroll">
-                    <div class="card-content">
-                        <h3 class="card-title">Millions Impacted</h3>
-                        <p class="card-text">Lives transformed through seminars, books, and digital content.</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+      
+      <div class="timeline-item">
+        <span class="timeline-year">2020</span>
+        <div class="timeline-content">
+          <h4>Digital Transformation</h4>
+          <p>Launched comprehensive online learning platforms, making his teachings accessible to millions globally.</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">SHIV KHERA</div>
-                    <p>Empowering millions worldwide with timeless wisdom and practical strategies for success since 1993.</p>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Shiv</a></li>
-                        <li><a href="books.html">Books</a></li>
-                        <li><a href="programs.html">Programs</a></li>
-                        <li><a href="speaking.html">Speaking</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Resources</h4>
-                    <ul class="footer-links">
-                        <li><a href="resources.html">Articles</a></li>
-                        <li><a href="resources.html">Videos</a></li>
-                        <li><a href="resources.html">Podcasts</a></li>
-                        <li><a href="resources.html">Newsletter</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Connect</h4>
-                    <ul class="footer-links">
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Shiv Khera. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">FB</a>
-                    <a href="#" class="social-link">TW</a>
-                    <a href="#" class="social-link">LI</a>
-                    <a href="#" class="social-link">IG</a>
-                    <a href="#" class="social-link">YT</a>
-                </div>
-            </div>
+      </div>
+      
+      <div class="timeline-item">
+        <span class="timeline-year">Present</span>
+        <div class="timeline-content">
+          <h4>Continuing Legacy</h4>
+          <p>Remains active in training, writing, and speaking, with a focus on developing the next generation of leaders.</p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </section>
 
-    <!-- Scripts -->
-    <script src="../js/main.js"></script>
+  <section class="values-section">
+    <div class="section-header">
+      <span class="section-label">Core Philosophy</span>
+      <h2 class="section-title">Principles That Guide</h2>
+    </div>
+    
+    <div class="values-grid">
+      <div class="value-card fade-in">
+        <h4>Integrity First</h4>
+        <p>Success without integrity is hollow. True winners build their achievements on a foundation of honesty and ethical conduct.</p>
+      </div>
+      
+      <div class="value-card fade-in">
+        <h4>Continuous Learning</h4>
+        <p>The moment you stop learning, you stop growing. Excellence is a journey, not a destination.</p>
+      </div>
+      
+      <div class="value-card fade-in">
+        <h4>Service to Others</h4>
+        <p>The measure of success is not what you accumulate, but what you contribute to the lives of others.</p>
+      </div>
+      
+      <div class="value-card fade-in">
+        <h4>Positive Attitude</h4>
+        <p>Your attitude determines your altitude. Winners focus on solutions, not problems.</p>
+      </div>
+      
+      <div class="value-card fade-in">
+        <h4>Hard Work</h4>
+        <p>There are no shortcuts to success. Consistent effort over time compounds into extraordinary results.</p>
+      </div>
+      
+      <div class="value-card fade-in">
+        <h4>Character Building</h4>
+        <p>Skills may get you to the top, but only character will keep you there. Build both relentlessly.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats-section">
+    <div class="section-header" style="text-align: center;">
+      <span class="section-label">Impact</span>
+      <h2 class="section-title">By The Numbers</h2>
+    </div>
+    
+    <div class="stats-grid" style="max-width: 900px; margin: 0 auto;">
+      <div class="stat-item fade-in">
+        <span class="stat-number" data-target="20000000">0</span>
+        <span class="stat-label">Books Sold Worldwide</span>
+      </div>
+      <div class="stat-item fade-in">
+        <span class="stat-number" data-target="60">0</span>
+        <span class="stat-label">Countries Reached</span>
+      </div>
+      <div class="stat-item fade-in">
+        <span class="stat-number" data-target="5000000">0</span>
+        <span class="stat-label">Lives Transformed</span>
+      </div>
+      <div class="stat-item fade-in">
+        <span class="stat-number" data-target="30">0</span>
+        <span class="stat-label">Years of Excellence</span>
+      </div>
+      <div class="stat-item fade-in">
+        <span class="stat-number" data-target="500">0</span>
+        <span class="stat-label">Corporate Clients</span>
+      </div>
+      <div class="stat-item fade-in">
+        <span class="stat-number" data-target="20">0</span>
+        <span class="stat-label">Languages Published</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">SHIV KHERA</div>
+        <p>Empowering individuals and organizations worldwide through timeless principles of success, leadership, and personal excellence since 1993.</p>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About Shiv</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Resources</h5>
+        <ul class="footer-links">
+          <li><a href="resources.html">Articles</a></li>
+          <li><a href="resources.html">Videos</a></li>
+          <li><a href="resources.html">Podcasts</a></li>
+          <li><a href="resources.html">Newsletter</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Connect</h5>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 Shiv Khera. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">f</a>
+        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
 </body>
 </html>

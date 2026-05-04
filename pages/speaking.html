@@ -1,226 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speaking Engagements - Shiv Khera Keynote Speaker</title>
-    <meta name="description" content="Book Shiv Khera for your next event. World-class keynote speaker on leadership, success, and personal development.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="../css/styles.css">
-    
-    <style>
-        .page-header {
-            background: var(--bg-gradient);
-            padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
-            text-align: center;
-            color: var(--text-light);
-        }
-        .page-title { color: var(--text-light); margin-bottom: var(--spacing-md); }
-        
-        .speaking-hero {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            align-items: center;
-            margin: var(--spacing-xl) 0;
-        }
-        
-        .speaking-image {
-            width: 100%;
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .topics-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-xl);
-        }
-        
-        .topic-card {
-            background: var(--bg-light);
-            padding: var(--spacing-lg);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-md);
-            text-align: center;
-            transition: var(--transition-medium);
-            border-top: 4px solid var(--accent-gold);
-        }
-        
-        .topic-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .topic-icon { font-size: 3rem; margin-bottom: var(--spacing-md); }
-        .topic-title { font-family: var(--font-heading); font-size: 1.5rem; color: var(--primary-dark); margin-bottom: var(--spacing-sm); }
-        .topic-text { color: var(--text-gray); }
-        
-        .events-section { background: var(--bg-off-white); padding: var(--spacing-xl) 0; }
-        
-        .event-card {
-            display: grid;
-            grid-template-columns: 200px 1fr auto;
-            gap: var(--spacing-lg);
-            align-items: center;
-            background: var(--bg-light);
-            padding: var(--spacing-lg);
-            border-radius: var(--radius-lg);
-            margin-bottom: var(--spacing-md);
-            box-shadow: var(--shadow-md);
-        }
-        
-        .event-date {
-            text-align: center;
-            padding: var(--spacing-md);
-            background: var(--primary-dark);
-            border-radius: var(--radius-md);
-            color: var(--text-light);
-        }
-        
-        .event-day { font-size: 2.5rem; font-weight: 700; color: var(--accent-gold); display: block; }
-        .event-month { font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; }
-        
-        @media (max-width: 1024px) {
-            .speaking-hero, .topics-grid { grid-template-columns: 1fr; }
-            .event-card { grid-template-columns: 1fr; text-align: center; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Speaking Engagements | Keynote Speaker Shiv Khera</title>
+  <meta name="description" content="Book Shiv Khera for keynote speeches, corporate events, and conferences. Inspire your audience with transformative messages.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <div class="loader"><div class="loader-content"><div class="loader-logo">SHIV KHERA</div><div class="loader-spinner"></div></div></div>
+  <div class="loading-screen">
+    <div class="loader-content">
+      <div class="loader-logo">SHIV KHERA</div>
+      <div class="loader-bar"></div>
+    </div>
+  </div>
 
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo">SHIV KHERA</a>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="books.html" class="nav-link">Books</a></li>
-                <li><a href="programs.html" class="nav-link">Programs</a></li>
-                <li><a href="speaking.html" class="nav-link active">Speaking</a></li>
-                <li><a href="resources.html" class="nav-link">Resources</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="mobile-toggle"><span></span><span></span><span></span></div>
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">SHIV KHERA</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
+
+  <section class="speaking-hero">
+    <h1>Inspire Your Audience</h1>
+    <p style="max-width: 700px; margin: 0 auto; font-size: 1.25rem;">
+      Book Shiv Khera for transformative keynote speeches that motivate, educate, and drive action.
+    </p>
+  </section>
+
+  <section class="speaking-detail" style="padding: 5rem 5%;">
+    <div class="grid-2">
+      <div class="fade-in">
+        <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=400&fit=crop" alt="Keynote Speech" style="width: 100%; border-radius: 4px;">
+      </div>
+      <div class="fade-in">
+        <span class="section-label">Keynote Speaking</span>
+        <h2 style="margin-bottom: 2rem;">Messages That Move Audiences</h2>
+        <p style="margin-bottom: 1.5rem;">
+          With over three decades of experience addressing audiences worldwide, Shiv Khera delivers powerful keynote speeches that combine inspiration with practical wisdom. His presentations are customized to each audience, ensuring maximum relevance and impact.
+        </p>
+        <p style="margin-bottom: 1.5rem;">
+          Whether you're organizing a corporate conference, leadership summit, sales rally, or public event, Shiv's message will resonate with your audience and drive meaningful change.
+        </p>
+        <a href="contact.html" class="btn btn-primary">Request Booking</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="topics-section" style="padding: 5rem 5%;">
+    <div class="section-header">
+      <span class="section-label">Speaking Topics</span>
+      <h2 class="section-title">Choose Your Theme</h2>
+    </div>
+    
+    <div class="topics-list">
+      <div class="topic-card fade-in">
+        <h4>The Winner's Mindset</h4>
+        <p>Discover the attitudes and beliefs that separate winners from everyone else. Learn how to develop mental toughness and maintain positivity in challenging times.</p>
+      </div>
+      
+      <div class="topic-card fade-in">
+        <h4>Leadership Excellence</h4>
+        <p>Explore the qualities of exceptional leaders and learn how to inspire teams, make difficult decisions, and create a culture of accountability and excellence.</p>
+      </div>
+      
+      <div class="topic-card fade-in">
+        <h4>Building Character</h4>
+        <p>Understand why character is the foundation of lasting success and learn practical strategies for developing integrity, honesty, and ethical leadership.</p>
+      </div>
+      
+      <div class="topic-card fade-in">
+        <h4>Sales Mastery</h4>
+        <p>Transform your approach to selling by focusing on relationship-building, value creation, and customer success rather than aggressive tactics.</p>
+      </div>
+      
+      <div class="topic-card fade-in">
+        <h4>Team Performance</h4>
+        <p>Learn how to build high-performance teams that collaborate effectively, communicate openly, and achieve extraordinary results together.</p>
+      </div>
+      
+      <div class="topic-card fade-in">
+        <h4>Change Management</h4>
+        <p>Navigate organizational change successfully by understanding resistance, communicating vision, and leading teams through transformation.</p>
+      </div>
+      
+      <div class="topic-card fade-in">
+        <h4>Customer Service Excellence</h4>
+        <p>Discover how exceptional customer service becomes your competitive advantage and learn strategies for exceeding expectations consistently.</p>
+      </div>
+      
+      <div class="topic-card fade-in">
+        <h4>Time & Priority Management</h4>
+        <p>Master the art of focusing on what truly matters and learn systems for maximizing productivity while maintaining work-life balance.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="events-section" style="padding: 5rem 5%;">
+    <div class="section-header">
+      <span class="section-label">Upcoming Events</span>
+      <h2 class="section-title">Join Us Live</h2>
+    </div>
+    
+    <div class="events-list">
+      <div class="event-item fade-in">
+        <div class="event-date">
+          <span class="event-day">15</span>
+          <span class="event-month">JAN 2025</span>
         </div>
-    </nav>
-
-    <section class="page-header">
-        <h1 class="page-title">Keynote Speaking</h1>
-        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">Inspire your audience with transformative messages from a world-renowned speaker</p>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="speaking-hero">
-                <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=600&h=700&fit=crop" alt="Shiv Khera Speaking" class="speaking-image">
-                <div>
-                    <h2 style="margin-bottom: var(--spacing-md);">World-Class Keynote Experience</h2>
-                    <p>With over 30 years of experience addressing audiences worldwide, Shiv Khera delivers powerful, engaging, and actionable keynote presentations that inspire change and drive results.</p>
-                    <p>From Fortune 500 corporations to government organizations and educational institutions, his messages resonate across cultures and industries.</p>
-                    <ul style="list-style: none; margin: var(--spacing-md) 0;">
-                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;"><span style="color: var(--accent-gold);">✓</span> Customized content for your audience</li>
-                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;"><span style="color: var(--accent-gold);">✓</span> Engaging storytelling with practical insights</li>
-                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;"><span style="color: var(--accent-gold);">✓</span> Q&A sessions available</li>
-                        <li style="padding: 0.5rem 0; display: flex; align-items: center; gap: 0.5rem;"><span style="color: var(--accent-gold);">✓</span> Virtual and in-person options</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary btn-large">Book Now</a>
-                </div>
-            </div>
-
-            <div class="section-header">
-                <h2 class="section-title">Popular Topics</h2>
-                <p class="section-subtitle">Choose from these impactful presentation topics</p>
-            </div>
-
-            <div class="topics-grid">
-                <div class="topic-card">
-                    <div class="topic-icon">🎯</div>
-                    <h3 class="topic-title">Attitude is Everything</h3>
-                    <p class="topic-text">Transform your mindset and unlock extraordinary potential through the power of positive attitude.</p>
-                </div>
-                <div class="topic-card">
-                    <div class="topic-icon">👑</div>
-                    <h3 class="topic-title">Leadership Excellence</h3>
-                    <p class="topic-text">Master the art of leading teams with vision, integrity, and compassion in today's complex world.</p>
-                </div>
-                <div class="topic-card">
-                    <div class="topic-icon">🚀</div>
-                    <h3 class="topic-title">Building Winning Teams</h3>
-                    <p class="topic-text">Create high-performance cultures where collaboration and excellence thrive.</p>
-                </div>
-                <div class="topic-card">
-                    <div class="topic-icon">💪</div>
-                    <h3 class="topic-title">Overcoming Adversity</h3>
-                    <p class="topic-text">Turn challenges into opportunities and develop unshakeable resilience.</p>
-                </div>
-                <div class="topic-card">
-                    <div class="topic-icon">📈</div>
-                    <h3 class="topic-title">Sales Mastery</h3>
-                    <p class="topic-text">Elevate your sales performance through relationship-building and value creation.</p>
-                </div>
-                <div class="topic-card">
-                    <div class="topic-icon">🌟</div>
-                    <h3 class="topic-title">Personal Excellence</h3>
-                    <p class="topic-text">Achieve peak performance in all areas of life through proven strategies.</p>
-                </div>
-            </div>
+        <div class="event-info">
+          <h4>Leadership Summit 2025</h4>
+          <p class="event-location">Mumbai, India • Keynote Address</p>
         </div>
-    </section>
-
-    <section class="events-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Upcoming Events</h2>
-                <p class="section-subtitle">Join us at these public speaking engagements</p>
-            </div>
-            
-            <div class="event-card">
-                <div class="event-date"><span class="event-day">15</span><span class="event-month">MAR</span></div>
-                <div>
-                    <h3>Leadership Summit 2024</h3>
-                    <p style="color: var(--text-gray);">Mumbai, India • Global Business Forum</p>
-                </div>
-                <a href="contact.html" class="btn btn-secondary">Register</a>
-            </div>
-            
-            <div class="event-card">
-                <div class="event-date"><span class="event-day">22</span><span class="event-month">APR</span></div>
-                <div>
-                    <h3>Excellence in Business Conference</h3>
-                    <p style="color: var(--text-gray);">Singapore • Marina Bay Sands</p>
-                </div>
-                <a href="contact.html" class="btn btn-secondary">Register</a>
-            </div>
-            
-            <div class="event-card">
-                <div class="event-date"><span class="event-day">10</span><span class="event-month">MAY</span></div>
-                <div>
-                    <h3>Corporate Leadership Forum</h3>
-                    <p style="color: var(--text-gray);">London, UK • ExCeL Centre</p>
-                </div>
-                <a href="contact.html" class="btn btn-secondary">Register</a>
-            </div>
+        <a href="#" class="btn btn-secondary">Register</a>
+      </div>
+      
+      <div class="event-item fade-in">
+        <div class="event-date">
+          <span class="event-day">28</span>
+          <span class="event-month">FEB 2025</span>
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand"><div class="logo">SHIV KHERA</div><p>Empowering millions worldwide since 1993.</p></div>
-                <div><h4 class="footer-title">Quick Links</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="books.html">Books</a></li><li><a href="programs.html">Programs</a></li></ul></div>
-                <div><h4 class="footer-title">Resources</h4><ul class="footer-links"><li><a href="resources.html">Articles</a></li><li><a href="resources.html">Videos</a></li></ul></div>
-                <div><h4 class="footer-title">Connect</h4><ul class="footer-links"><li><a href="contact.html">Contact</a></li></ul></div>
-            </div>
-            <div class="footer-bottom"><p>&copy; 2024 Shiv Khera. All rights reserved.</p></div>
+        <div class="event-info">
+          <h4>Global Sales Conference</h4>
+          <p class="event-location">Dubai, UAE • Main Stage Speaker</p>
         </div>
-    </footer>
-    <script src="../js/main.js"></script>
+        <a href="#" class="btn btn-secondary">Register</a>
+      </div>
+      
+      <div class="event-item fade-in">
+        <div class="event-date">
+          <span class="event-day">12</span>
+          <span class="event-month">MAR 2025</span>
+        </div>
+        <div class="event-info">
+          <h4>Excellence in Business Forum</h4>
+          <p class="event-location">Singapore • Featured Speaker</p>
+        </div>
+        <a href="#" class="btn btn-secondary">Register</a>
+      </div>
+      
+      <div class="event-item fade-in">
+        <div class="event-date">
+          <span class="event-day">05</span>
+          <span class="event-month">APR 2025</span>
+        </div>
+        <div class="event-info">
+          <h4>Personal Excellence Workshop</h4>
+          <p class="event-location">London, UK • 2-Day Intensive</p>
+        </div>
+        <a href="#" class="btn btn-secondary">Register</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="past-events" style="padding: 5rem 5%; background: var(--charcoal);">
+    <div class="section-header" style="text-align: center;">
+      <span class="section-label">Past Engagements</span>
+      <h2 class="section-title">Trusted By Leading Organizations</h2>
+    </div>
+    
+    <div class="grid-4" style="text-align: center; opacity: 0.7;">
+      <div class="fade-in" style="padding: 2rem;">
+        <h4 style="font-size: 1.5rem;">Fortune 500</h4>
+        <p style="font-size: 0.875rem;">Multiple Companies</p>
+      </div>
+      <div class="fade-in" style="padding: 2rem;">
+        <h4 style="font-size: 1.5rem;">Government</h4>
+        <p style="font-size: 0.875rem;">Various Departments</p>
+      </div>
+      <div class="fade-in" style="padding: 2rem;">
+        <h4 style="font-size: 1.5rem;">Universities</h4>
+        <p style="font-size: 0.875rem;">Top Institutions</p>
+      </div>
+      <div class="fade-in" style="padding: 2rem;">
+        <h4 style="font-size: 1.5rem;">Associations</h4>
+        <p style="font-size: 0.875rem;">Professional Bodies</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="booking-cta" style="padding: 8rem 5%; text-align: center;">
+    <div class="fade-in">
+      <span class="section-label">Book Now</span>
+      <h2 class="section-title">Ready to Inspire Your Audience?</h2>
+      <p class="section-description" style="margin: 0 auto 3rem;">
+        Contact us to discuss your event requirements and availability. Early booking is recommended as dates fill quickly.
+      </p>
+      <a href="contact.html" class="btn btn-primary">Request Booking Information</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">SHIV KHERA</div>
+        <p>Empowering individuals and organizations worldwide through timeless principles of success, leadership, and personal excellence since 1993.</p>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About Shiv</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Resources</h5>
+        <ul class="footer-links">
+          <li><a href="resources.html">Articles</a></li>
+          <li><a href="resources.html">Videos</a></li>
+          <li><a href="resources.html">Podcasts</a></li>
+          <li><a href="resources.html">Newsletter</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Connect</h5>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 Shiv Khera. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">f</a>
+        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
 </body>
 </html>

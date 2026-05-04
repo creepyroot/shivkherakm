@@ -1,614 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Programs & Training - Leadership Development by Shiv Khera</title>
-    <meta name="description" content="Transform your life and career with Shiv Khera's intensive training programs in leadership, personal development, and corporate excellence.">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Styles -->
-    <link rel="stylesheet" href="../css/styles.css">
-    
-    <style>
-        .page-header {
-            background: var(--bg-gradient);
-            padding: calc(var(--spacing-xl) * 2) 0 var(--spacing-xl);
-            text-align: center;
-            color: var(--text-light);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .page-title {
-            color: var(--text-light);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .program-hero {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-lg);
-            margin-bottom: var(--spacing-xl);
-        }
-        
-        .program-card-large {
-            background: var(--bg-light);
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-            transition: var(--transition-medium);
-        }
-        
-        .program-card-large:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .program-image {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-        }
-        
-        .program-content {
-            padding: var(--spacing-lg);
-        }
-        
-        .program-category {
-            display: inline-block;
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 0.25rem 1rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .program-title {
-            font-family: var(--font-heading);
-            font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .program-description {
-            color: var(--text-gray);
-            line-height: 1.8;
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .program-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .detail-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .detail-icon {
-            color: var(--accent-gold);
-            font-size: 1.25rem;
-        }
-        
-        .detail-text {
-            font-size: 0.875rem;
-            color: var(--text-gray);
-        }
-        
-        .program-modules {
-            margin-top: var(--spacing-md);
-        }
-        
-        .module-title {
-            font-weight: 600;
-            color: var(--primary-dark);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .module-list {
-            list-style: none;
-        }
-        
-        .module-list li {
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-            color: var(--text-gray);
-            font-size: 0.95rem;
-        }
-        
-        .module-list li::before {
-            content: '→';
-            position: absolute;
-            left: 0;
-            color: var(--accent-gold);
-        }
-        
-        .programs-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-            margin-top: var(--spacing-xl);
-        }
-        
-        .program-card {
-            background: var(--bg-light);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-md);
-            transition: var(--transition-medium);
-        }
-        
-        .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .program-card-content {
-            padding: var(--spacing-md);
-        }
-        
-        .program-card-title {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            margin-bottom: var(--spacing-xs);
-        }
-        
-        .program-duration {
-            color: var(--accent-gold);
-            font-weight: 600;
-            font-size: 0.875rem;
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .cta-section {
-            background: linear-gradient(135deg, var(--primary-dark), var(--primary-blue));
-            padding: var(--spacing-xl) 0;
-            text-align: center;
-            color: var(--text-light);
-        }
-        
-        .pricing-section {
-            background: var(--bg-off-white);
-            padding: var(--spacing-xl) 0;
-        }
-        
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-            max-width: 1200px;
-            margin: var(--spacing-xl) auto 0;
-        }
-        
-        .pricing-card {
-            background: var(--bg-light);
-            border-radius: var(--radius-lg);
-            padding: var(--spacing-lg);
-            text-align: center;
-            box-shadow: var(--shadow-md);
-            position: relative;
-            transition: var(--transition-medium);
-        }
-        
-        .pricing-card.featured {
-            transform: scale(1.05);
-            border: 2px solid var(--accent-gold);
-        }
-        
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .pricing-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
-        }
-        
-        .pricing-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--accent-gold);
-            color: var(--primary-dark);
-            padding: 0.5rem 1.5rem;
-            border-radius: 50px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-        
-        .pricing-name {
-            font-family: var(--font-heading);
-            font-size: 1.5rem;
-            color: var(--primary-dark);
-            margin-bottom: var(--spacing-sm);
-        }
-        
-        .pricing-price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--accent-gold);
-            margin-bottom: var(--spacing-md);
-        }
-        
-        .pricing-price span {
-            font-size: 1rem;
-            color: var(--text-gray);
-        }
-        
-        .pricing-features {
-            list-style: none;
-            margin-bottom: var(--spacing-lg);
-            text-align: left;
-        }
-        
-        .pricing-features li {
-            padding: 0.75rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            color: var(--text-gray);
-        }
-        
-        @media (max-width: 1024px) {
-            .program-hero {
-                grid-template-columns: 1fr;
-            }
-            
-            .programs-grid,
-            .pricing-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .pricing-card.featured {
-                transform: scale(1);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .programs-grid,
-            .pricing-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .program-details {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Training Programs | Personal & Corporate Development</title>
+  <meta name="description" content="Explore comprehensive training programs by Shiv Khera for personal excellence, leadership, sales, and corporate transformation.">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/pages.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div class="loader">
-        <div class="loader-content">
-            <div class="loader-logo">SHIV KHERA</div>
-            <div class="loader-spinner"></div>
-        </div>
+  <div class="loading-screen">
+    <div class="loader-content">
+      <div class="loader-logo">SHIV KHERA</div>
+      <div class="loader-bar"></div>
     </div>
+  </div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a href="../index.html" class="logo">SHIV KHERA</a>
-            <ul class="nav-menu">
-                <li><a href="../index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="books.html" class="nav-link">Books</a></li>
-                <li><a href="programs.html" class="nav-link active">Programs</a></li>
-                <li><a href="speaking.html" class="nav-link">Speaking</a></li>
-                <li><a href="resources.html" class="nav-link">Resources</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-            </ul>
-            <div class="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+  <nav class="nav">
+    <a href="../index.html" class="nav-logo">SHIV KHERA</a>
+    <ul class="nav-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="programs.html">Programs</a></li>
+      <li><a href="speaking.html">Speaking</a></li>
+      <li><a href="resources.html">Resources</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </nav>
 
-    <!-- Page Header -->
-    <section class="page-header">
-        <h1 class="page-title">Transformational Programs</h1>
-        <p style="color: var(--text-gray); max-width: 600px; margin: 0 auto;">
-            Join thousands who have transformed their lives through our intensive training programs
+  <section class="programs-intro">
+    <h1>Transform Through Training</h1>
+    <p style="max-width: 800px; margin: 0 auto; font-size: 1.25rem;">
+      Comprehensive programs designed to unlock potential, build skills, and create lasting change in individuals and organizations.
+    </p>
+  </section>
+
+  <section class="programs-detail" style="padding: 5rem 5%;">
+    <div class="grid-2">
+      <div class="fade-in">
+        <span class="section-label">Flagship Program</span>
+        <h2 style="margin-bottom: 2rem;">Personal Excellence Program</h2>
+        <p style="margin-bottom: 1.5rem;">
+          This transformative 2-day intensive program is designed to help you discover your true potential and develop the mindset, habits, and skills necessary for sustained success. Through interactive sessions, practical exercises, and real-world applications, you'll learn:
         </p>
-    </section>
+        <ul style="list-style: none; margin-bottom: 2rem;">
+          <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Building an unshakeable positive attitude</li>
+          <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Setting and achieving meaningful goals</li>
+          <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Mastering time management and productivity</li>
+          <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Developing effective communication skills</li>
+          <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Building strong relationships and networks</li>
+          <li style="padding: 0.75rem 0; border-bottom: 1px solid rgba(255,255,255,0.1);">✓ Overcoming obstacles and limiting beliefs</li>
+        </ul>
+        <a href="#pricing" class="btn btn-primary">View Pricing</a>
+      </div>
+      <div class="fade-in">
+        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop" alt="Training Session" style="width: 100%; border-radius: 4px;">
+      </div>
+    </div>
+  </section>
 
-    <!-- Featured Programs -->
-    <section class="section">
-        <div class="container">
-            <div class="program-hero">
-                <!-- Program 1 -->
-                <div class="program-card-large">
-                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop" alt="Leadership Excellence" class="program-image">
-                    <div class="program-content">
-                        <span class="program-category">Flagship Program</span>
-                        <h2 class="program-title">Leadership Excellence Program</h2>
-                        <p class="program-description">
-                            A comprehensive 3-day intensive designed for executives and managers who want to master the art of leading high-performance teams. Learn proven strategies from Fortune 500 leadership practices.
-                        </p>
-                        
-                        <div class="program-details">
-                            <div class="detail-item">
-                                <span class="detail-icon">📅</span>
-                                <span class="detail-text">3 Days Intensive</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-icon">👥</span>
-                                <span class="detail-text">Max 30 Participants</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-icon">📍</span>
-                                <span class="detail-text">In-Person & Online</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-icon">🎓</span>
-                                <span class="detail-text">Certification Included</span>
-                            </div>
-                        </div>
-                        
-                        <div class="program-modules">
-                            <h4 class="module-title">What You'll Learn:</h4>
-                            <ul class="module-list">
-                                <li>Situational leadership and adaptability</li>
-                                <li>Building trust and psychological safety</li>
-                                <li>Conflict resolution and difficult conversations</li>
-                                <li>Strategic decision-making frameworks</li>
-                            </ul>
-                        </div>
-                        
-                        <a href="contact.html" class="btn btn-primary" style="margin-top: var(--spacing-md);">Apply Now</a>
-                    </div>
-                </div>
+  <section class="all-programs" style="padding: 5rem 5%;">
+    <div class="section-header">
+      <span class="section-label">All Programs</span>
+      <h2 class="section-title">Choose Your Path</h2>
+    </div>
+    
+    <div class="grid-3">
+      <div class="program-card fade-in">
+        <div class="program-icon">🎯</div>
+        <h4>Personal Excellence</h4>
+        <p>2-Day Intensive Workshop</p>
+        <p style="font-size: 0.875rem; color: var(--light-gray); margin-top: 1rem;">Master the fundamentals of success and develop winning habits that last a lifetime. Perfect for individuals seeking transformation.</p>
+        <a href="#pricing" class="program-link">Learn More</a>
+      </div>
+      
+      <div class="program-card fade-in">
+        <div class="program-icon">💼</div>
+        <h4>Leadership Mastery</h4>
+        <p>3-Day Executive Program</p>
+        <p style="font-size: 0.875rem; color: var(--light-gray); margin-top: 1rem;">Develop exceptional leadership skills to inspire teams and drive organizational success. For managers and executives.</p>
+        <a href="#pricing" class="program-link">Learn More</a>
+      </div>
+      
+      <div class="program-card fade-in">
+        <div class="program-icon">📈</div>
+        <h4>Sales Excellence</h4>
+        <p>2-Day Sales Training</p>
+        <p style="font-size: 0.875rem; color: var(--light-gray); margin-top: 1rem;">Transform your sales approach with proven strategies that close deals and build lasting customer relationships.</p>
+        <a href="#pricing" class="program-link">Learn More</a>
+      </div>
+      
+      <div class="program-card fade-in">
+        <div class="program-icon">👥</div>
+        <h4>Team Building</h4>
+        <p>1-2 Day Workshop</p>
+        <p style="font-size: 0.875rem; color: var(--light-gray); margin-top: 1rem;">Create high-performance teams that collaborate effectively and achieve extraordinary results together.</p>
+        <a href="#pricing" class="program-link">Learn More</a>
+      </div>
+      
+      <div class="program-card fade-in">
+        <div class="program-icon">🧠</div>
+        <h4>Mindset Transformation</h4>
+        <p>1-Day Intensive</p>
+        <p style="font-size: 0.875rem; color: var(--light-gray); margin-top: 1rem;">Break limiting beliefs and develop a winner's mindset for sustained success in all areas of life.</p>
+        <a href="#pricing" class="program-link">Learn More</a>
+      </div>
+      
+      <div class="program-card fade-in">
+        <div class="program-icon">🌟</div>
+        <h4>Corporate Training</h4>
+        <p>Customized Solutions</p>
+        <p style="font-size: 0.875rem; color: var(--light-gray); margin-top: 1rem;">Tailored training programs designed specifically for your organization's unique challenges and goals.</p>
+        <a href="#pricing" class="program-link">Learn More</a>
+      </div>
+    </div>
+  </section>
 
-                <!-- Program 2 -->
-                <div class="program-card-large">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=600&h=400&fit=crop" alt="Personal Mastery" class="program-image">
-                    <div class="program-content">
-                        <span class="program-category">Most Popular</span>
-                        <h2 class="program-title">Personal Mastery Program</h2>
-                        <p class="program-description">
-                            Transform yourself from the inside out. This 2-day program focuses on self-discovery, habit formation, and creating a personal vision that drives extraordinary results.
-                        </p>
-                        
-                        <div class="program-details">
-                            <div class="detail-item">
-                                <span class="detail-icon">📅</span>
-                                <span class="detail-text">2 Days Workshop</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-icon">👥</span>
-                                <span class="detail-text">Max 50 Participants</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-icon">📍</span>
-                                <span class="detail-text">Multiple Cities</span>
-                            </div>
-                            <div class="detail-item">
-                                <span class="detail-icon">🎓</span>
-                                <span class="detail-text">Action Plan Included</span>
-                            </div>
-                        </div>
-                        
-                        <div class="program-modules">
-                            <h4 class="module-title">What You'll Learn:</h4>
-                            <ul class="module-list">
-                                <li>Discover your core values and purpose</li>
-                                <li>Break limiting beliefs and patterns</li>
-                                <li>Build unshakeable confidence</li>
-                                <li>Create powerful morning and evening routines</li>
-                            </ul>
-                        </div>
-                        
-                        <a href="contact.html" class="btn btn-primary" style="margin-top: var(--spacing-md);">Apply Now</a>
-                    </div>
-                </div>
-            </div>
+  <section id="pricing" class="pricing-section" style="padding: 5rem 5%;">
+    <div class="section-header" style="text-align: center;">
+      <span class="section-label">Investment</span>
+      <h2 class="section-title">Program Pricing</h2>
+      <p class="section-description" style="margin: 0 auto;">Choose the program that fits your needs</p>
+    </div>
+    
+    <div class="pricing-grid">
+      <div class="pricing-card fade-in">
+        <h3 class="pricing-name">Individual Workshop</h3>
+        <div class="pricing-price">$497</div>
+        <ul class="pricing-features">
+          <li>2-Day Intensive Training</li>
+          <li>Comprehensive Workbook</li>
+          <li>Certificate of Completion</li>
+          <li>30-Day Email Support</li>
+          <li>Access to Online Resources</li>
+          <li>Networking Opportunities</li>
+        </ul>
+        <a href="../pages/contact.html" class="btn btn-secondary">Enroll Now</a>
+      </div>
+      
+      <div class="pricing-card featured fade-in">
+        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; color: var(--silver);">Most Popular</div>
+        <h3 class="pricing-name">Executive Program</h3>
+        <div class="pricing-price">$1,497</div>
+        <ul class="pricing-features">
+          <li>3-Day Advanced Training</li>
+          <li>Personal Coaching Session</li>
+          <li>Executive Workbook & Tools</li>
+          <li>Certificate of Excellence</li>
+          <li>90-Day Email Support</li>
+          <li>VIP Networking Events</li>
+          <li>Lifetime Resource Access</li>
+        </ul>
+        <a href="../pages/contact.html" class="btn btn-primary">Enroll Now</a>
+      </div>
+      
+      <div class="pricing-card fade-in">
+        <h3 class="pricing-name">Corporate Package</h3>
+        <div class="pricing-price">Custom</div>
+        <ul class="pricing-features">
+          <li>Customized Content</li>
+          <li>On-site or Virtual Delivery</li>
+          <li>Participant Materials</li>
+          <li>Pre-Training Assessment</li>
+          <li>Post-Training Follow-up</li>
+          <li>ROI Measurement</li>
+          <li>Dedicated Account Manager</li>
+        </ul>
+        <a href="../pages/contact.html" class="btn btn-secondary">Contact Us</a>
+      </div>
+    </div>
+  </section>
 
-            <!-- All Programs Grid -->
-            <div class="section-header" style="margin-top: var(--spacing-xl);">
-                <h2 class="section-title">All Programs</h2>
-                <p class="section-subtitle">Choose the program that fits your goals</p>
-            </div>
-            
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-card-content">
-                        <span class="program-category">Corporate</span>
-                        <h3 class="program-card-title">Corporate Training</h3>
-                        <p class="program-duration">Customizable Duration</p>
-                        <p class="card-text">Tailored training solutions for organizations looking to enhance team performance and culture.</p>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
-                    </div>
-                </div>
-                
-                <div class="program-card">
-                    <div class="program-card-content">
-                        <span class="program-category">Sales</span>
-                        <h3 class="program-card-title">Sales Mastery</h3>
-                        <p class="program-duration">2 Days</p>
-                        <p class="card-text">Master the psychology of selling and build lasting customer relationships.</p>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
-                    </div>
-                </div>
-                
-                <div class="program-card">
-                    <div class="program-card-content">
-                        <span class="program-category">Communication</span>
-                        <h3 class="program-card-title">Effective Communication</h3>
-                        <p class="program-duration">1 Day</p>
-                        <p class="card-text">Enhance your communication skills for better relationships and results.</p>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
-                    </div>
-                </div>
-                
-                <div class="program-card">
-                    <div class="program-card-content">
-                        <span class="program-category">Time Management</span>
-                        <h3 class="program-card-title">Time Mastery</h3>
-                        <p class="program-duration">1 Day</p>
-                        <p class="card-text">Take control of your time and multiply your productivity.</p>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
-                    </div>
-                </div>
-                
-                <div class="program-card">
-                    <div class="program-card-content">
-                        <span class="program-category">Team Building</span>
-                        <h3 class="program-card-title">Team Excellence</h3>
-                        <p class="program-duration">1-2 Days</p>
-                        <p class="card-text">Build cohesive, high-performing teams that achieve extraordinary results.</p>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
-                    </div>
-                </div>
-                
-                <div class="program-card">
-                    <div class="program-card-content">
-                        <span class="program-category">Online</span>
-                        <h3 class="program-card-title">Digital Learning Hub</h3>
-                        <p class="program-duration">Self-Paced</p>
-                        <p class="card-text">Access all programs online with lifetime access and community support.</p>
-                        <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Learn More</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="testimonials-program" style="padding: 5rem 5%; background: var(--charcoal);">
+    <div class="section-header" style="text-align: center;">
+      <span class="section-label">Success Stories</span>
+      <h2 class="section-title">Program Graduates Speak</h2>
+    </div>
+    
+    <div class="grid-3">
+      <div class="review-card fade-in">
+        <p class="review-text">"The Personal Excellence Program changed my life. I went from feeling stuck to launching my own business within 6 months."</p>
+        <p class="review-author">— Neha Gupta, Entrepreneur</p>
+      </div>
+      
+      <div class="review-card fade-in">
+        <p class="review-text">"Our sales team's performance increased by 250% after the Sales Excellence training. Best investment we've made."</p>
+        <p class="review-author">— Mark Thompson, Sales VP</p>
+      </div>
+      
+      <div class="review-card fade-in">
+        <p class="review-text">"The Leadership Mastery program transformed how I manage my team. Engagement and productivity have never been higher."</p>
+        <p class="review-author">— Lisa Wang, Director</p>
+      </div>
+    </div>
+  </section>
 
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Investment Options</h2>
-                <p class="section-subtitle">Choose the plan that works for you</p>
-            </div>
-            
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3 class="pricing-name">Individual</h3>
-                    <div class="pricing-price">$997<span>/program</span></div>
-                    <ul class="pricing-features">
-                        <li>Full program access</li>
-                        <li>Program materials</li>
-                        <li>Certificate of completion</li>
-                        <li>30-day email support</li>
-                        <li>Group networking sessions</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Get Started</a>
-                </div>
-                
-                <div class="pricing-card featured">
-                    <span class="pricing-badge">Most Popular</span>
-                    <h3 class="pricing-name">Professional</h3>
-                    <div class="pricing-price">$2,497<span>/year</span></div>
-                    <ul class="pricing-features">
-                        <li>All individual programs</li>
-                        <li>Priority seating</li>
-                        <li>1-on-1 coaching session</li>
-                        <li>Exclusive resources library</li>
-                        <li>Private community access</li>
-                        <li>Quarterly group coaching</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
-                </div>
-                
-                <div class="pricing-card">
-                    <h3 class="pricing-name">Enterprise</h3>
-                    <div class="pricing-price">Custom</div>
-                    <ul class="pricing-features">
-                        <li>Unlimited team access</li>
-                        <li>Customized curriculum</li>
-                        <li>On-site training options</li>
-                        <li>Dedicated account manager</li>
-                        <li>ROI tracking & reporting</li>
-                        <li>Annual strategy review</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-secondary" style="width: 100%;">Contact Us</a>
-                </div>
-            </div>
-        </div>
-    </section>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-logo">SHIV KHERA</div>
+        <p>Empowering individuals and organizations worldwide through timeless principles of success, leadership, and personal excellence since 1993.</p>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Quick Links</h5>
+        <ul class="footer-links">
+          <li><a href="about.html">About Shiv</a></li>
+          <li><a href="books.html">Books</a></li>
+          <li><a href="programs.html">Programs</a></li>
+          <li><a href="speaking.html">Speaking</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Resources</h5>
+        <ul class="footer-links">
+          <li><a href="resources.html">Articles</a></li>
+          <li><a href="resources.html">Videos</a></li>
+          <li><a href="resources.html">Podcasts</a></li>
+          <li><a href="resources.html">Newsletter</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-column">
+        <h5>Connect</h5>
+        <ul class="footer-links">
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter</a></li>
+          <li><a href="#">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2024 Shiv Khera. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#" class="social-link" aria-label="Facebook">f</a>
+        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+        <a href="#" class="social-link" aria-label="YouTube">▶</a>
+      </div>
+    </div>
+  </footer>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="container-narrow">
-            <h2 style="color: var(--text-light); margin-bottom: var(--spacing-md);">Ready to Transform Your Life?</h2>
-            <p style="color: var(--text-gray); margin-bottom: var(--spacing-lg);">
-                Take the first step towards achieving your full potential. Our programs have transformed thousands of lives worldwide.
-            </p>
-            <a href="contact.html" class="btn btn-primary btn-large">Schedule a Consultation</a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <div class="logo">SHIV KHERA</div>
-                    <p>Empowering millions worldwide with timeless wisdom and practical strategies for success since 1993.</p>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Quick Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Shiv</a></li>
-                        <li><a href="books.html">Books</a></li>
-                        <li><a href="programs.html">Programs</a></li>
-                        <li><a href="speaking.html">Speaking</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Resources</h4>
-                    <ul class="footer-links">
-                        <li><a href="resources.html">Articles</a></li>
-                        <li><a href="resources.html">Videos</a></li>
-                        <li><a href="resources.html">Podcasts</a></li>
-                        <li><a href="resources.html">Newsletter</a></li>
-                    </ul>
-                </div>
-                
-                <div>
-                    <h4 class="footer-title">Connect</h4>
-                    <ul class="footer-links">
-                        <li><a href="contact.html">Contact</a></li>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 Shiv Khera. All rights reserved.</p>
-                <div class="social-links">
-                    <a href="#" class="social-link">FB</a>
-                    <a href="#" class="social-link">TW</a>
-                    <a href="#" class="social-link">LI</a>
-                    <a href="#" class="social-link">IG</a>
-                    <a href="#" class="social-link">YT</a>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="../js/main.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
